@@ -2,6 +2,7 @@ package com.lyh.guguanjia.controller;
 
 
 import com.lyh.guguanjia.entity.AppVersion;
+import com.lyh.guguanjia.entity.Result;
 import com.lyh.guguanjia.service.AppVersionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +18,8 @@ public class AppVersionController {
 	AppVersionService service;
 
 	@RequestMapping("index")
-	public List<AppVersion> selectAll(){
-		return service.selectAll();
+	public Result selectAll(){
+		return new Result(service.selectAll());
 	}
 
 }
