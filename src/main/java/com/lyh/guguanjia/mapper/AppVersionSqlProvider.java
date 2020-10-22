@@ -1,6 +1,5 @@
 package com.lyh.guguanjia.mapper;
 
-
 import com.lyh.guguanjia.entity.AppVersion;
 import org.apache.ibatis.jdbc.SQL;
 
