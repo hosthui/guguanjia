@@ -796,39 +796,56 @@
 									</div>
 								</div>
 								<div id="profile" class="tab-pane">
-									<form action="app/save" method="post" id="app-save-form">
+									<form  method="post" id="app-save-form">
 										<div class="center padding-10">
 											<label>系统平台：</label>
-											<select name="platform" class="width-50" datatype="*" nullmsg="请选择系统平台！">
+											<select name="platform"
+                                                    class="width-50"
+                                                    v-model="app.platform">
 												<option value="0" selected>Android</option>
 												<option value="1">IOS</option>
 											</select>
 										</div>
 										<div class="center padding-10">
 											<label>是否强制更新：</label>
-											<select name="platform" class="width-50" datatype="*" nullmsg="请选择是否强制更新！">
+											<select name="forceUpdate"
+                                                    class="width-50"
+                                                    v-model="app.forceUpdate">
 												<option value="0" selected>否</option>
 												<option value="1">是</option>
 											</select>
 										</div>
 										<div class="center padding-10">
 											<label>版本号：</label>
-											<input type="text" class="width-50" name="versionNo" datatype="*" nullmsg="请输入版本号"/>
+											<input type="text"
+                                                   class="width-50"
+                                                   name="versionNo"
+                                                   v-model="app.versionNo"/>
 										</div>
 										<div class="center padding-10">
 											<label>下载地址：</label>
-											<input type="text" class="width-50" name="downPath" datatype="*" nullmsg="请输入下载地址！" />
+											<input type="text"
+                                                   class="width-50"
+                                                   name="downPath"
+                                                   v-model="app.downPath"/>
 										</div>
 										<div class="center padding-10">
 											<label>应用大小：</label>
-											<input type="text" class="width-50" name="size" datatype="*" nulmsg="请输入应用大小，单位MB"/>
+											<input type="text"
+                                                   class="width-50"
+                                                   name="size"
+                                                   v-model="app.size"/>
 										</div>
 										<div class="center padding-10" >
 											<label style="vertical-align: top;">版本说明：</label>
-											<textarea type="text" class="width-50" name="appExplain"></textarea>
+											<textarea type="text"
+                                                      class="width-50"
+                                                      name="appExplain"
+                                                      v-model="app.appExplain"></textarea>
 										</div>
 										<div class="margin-t15">
-											<span class="btn btn-info btn-block bigger-120" id="app-save-btn">保 存</span>
+											<span
+                                                    class="btn btn-info btn-block bigger-120" id="app-save-btn" @click="addApp()">保 存</span>
 										</div>
 									</form>
 								</div>
