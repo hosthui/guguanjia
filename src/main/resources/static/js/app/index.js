@@ -16,7 +16,18 @@ let vm = new Vue({
                 // console.log(error.message);
             })
         },
+        addApp:function () {
+            axios({
+                url:"manager/app/insert",
+                method:"post",
+                data:this.app
+            }).then(response=>{
+                    // layer.msg("添加成功")
 
+                }).catch(error=>{
+
+            })
+        },
         toUpdate:function (data) {
             layer.obj=data;
             layer.open({
@@ -29,18 +40,6 @@ let vm = new Vue({
                 end: ()=> {
                     this.selectAll();
                 }
-            })
-        },
-        addApp:function () {
-            axios({
-                url:"manager/app/insert",
-                method:"post",
-                data:this.app
-            }).then(response=>{
-                layer.msg("添加成功")
-
-            }).catch(err=>{
-
             })
         }
     },

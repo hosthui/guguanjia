@@ -880,25 +880,26 @@
     try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
 
     $(function(){
+        $("#sidebar").load("main/sidebar");
+        $("#navbar").load("main/navbar");
 
-
-        $("#app-save-btn").click(function() {
-            if("true" == "true"){
-
-            }
-            sysuserForm.submitForm(false);
-            return false;
-        });
-
-        $("#app-save-form-cancel").click(function(){
-            layer.closeAll();
-            return false;
-        });
-
-        $("#app-save-form input,#app-save-form textarea").blur(function(){
-            layer.closeTips();
-            return false;
-        })
+        // $("#app-save-btn").click(function() {
+        //     if("true" == "true"){
+        //
+        //     }
+        //     sysuserForm.submitForm(false);
+        //     return false;
+        // });
+        //
+        // $("#app-save-form-cancel").click(function(){
+        //     layer.closeAll();
+        //     return false;
+        // });
+        //
+        // $("#app-save-form input,#app-save-form textarea").blur(function(){
+        //     layer.closeTips();
+        //     return false;
+        // })
 
 
     });
