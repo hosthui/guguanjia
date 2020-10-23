@@ -1,5 +1,7 @@
 package com.lyh.guguanjia.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -39,12 +41,14 @@ public class AppVersion {
      * 数据创建时间,在数据新增时设置
      */
     @Column(name = "create_date")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "CTT")
     private Date createDate;
 
     /**
      * 数据修改时间,在数据新增时和修改时设置
      */
     @Column(name = "update_date")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "CTT")
     private Date updateDate;
 
     /**

@@ -5,6 +5,8 @@ spring:
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
+  resources:
+    static-locations: classpath:/,classpath:/html/
 
 
 #指定到mapper包位置输出，执行SQL日志
@@ -18,3 +20,6 @@ logging:
 server:
   servlet:
     context-path: /guguanjia
+
+
+
