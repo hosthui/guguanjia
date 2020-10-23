@@ -35,7 +35,6 @@ public class AppVersionController {
 
 	@RequestMapping(value = "insert",method = RequestMethod.POST)
 	public Result add(@RequestBody  AppVersion app){
-		System.out.println(123);
 		return new Result(service.insertSelective(app));
 	}
 
