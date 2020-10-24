@@ -78,32 +78,34 @@
 									<tbody>
 									<tr class="FormData">
 										<td class="CaptionTD">需求ID</td>
-										<td class="DataTD width-100">4</td>
+										<td
+                                                class="DataTD width-100">{{demand.id}}</td>
 									</tr>
 									<tr class="FormData">
 										<td class="CaptionTD">提出时间</td>
-										<td class="DataTD">2016-07-27 17:37:59</td>
+										<td class="DataTD">{{demand.createDate}}</td>
 									</tr>
 									<tr class="FormData">
 										<td class="CaptionTD">姓名</td>
-										<td class="DataTD">test</td>
+										<td class="DataTD">{{demand.name}}</td>
 									</tr>
 									<tr class="FormData">
 										<td class="CaptionTD">联系电话</td>
-										<td class="DataTD">test</td>
+										<td class="DataTD">{{demand.phone}}</td>
 									</tr>
 									<tr class="FormData">
 										<td class="CaptionTD">单位名称</td>
-										<td class="DataTD">test</td>
+										<td class="DataTD">{{demand.company}}</td>
 									</tr>
 									<tr class="FormData">
 										<td class="CaptionTD">需求详情</td>
-										<td class="DataTD"></td>
+										<td class="DataTD">{{demand.description}}</td>
 									</tr>
 									<tr class="FormData">
 										<td class="CaptionTD">处理状态</td>
 										<td class="DataTD">
-											<select name="status" class="width-70">
+											<select name="status"
+                                                    class="width-70" v-model="demand.status">
 												<option value="0" selected="">未处理</option>
 												<option value="1">已处理</option>
 											</select>
@@ -112,7 +114,9 @@
 									<tr class="FormData">
 										<td class="CaptionTD">处理详情</td>
 										<td class="DataTD">
-											<textarea rows="5" name="treatment" class="autosize-transition form-control" style="resize: none; overflow: hidden; word-wrap: break-word; height: 112px;"></textarea>
+											<textarea rows="5"
+                                                      name="treatment"
+                                                      class="autosize-transition form-control" style="resize: none; overflow: hidden; word-wrap: break-word; height: 112px;" v-model="demand.treatment"></textarea>
 										</td>
 									</tr>
 									</tbody>
@@ -121,7 +125,8 @@
 						</div>
 
 							<div class="width-100 clearfix" tag-save-btn="" style="bottom: -36px; left: 0px; position: absolute;">
-	<span class="btn btn-primary btn-sm bigger-110 width-50  pull-left" id="demand-save-save">
+	<span class="btn btn-primary btn-sm bigger-110 width-50  pull-left"
+          id="demand-save-save" @click="demandUp()">
 		<i class="ace-icon fa fa-floppy-o align-top bigger-125"></i> 确 定
 	</span>
 								<span class="btn btn-yellow btn-sm bigger-110 width-50 pull-right" id="demand-save-cancel">
@@ -242,6 +247,10 @@
 <script type="text/javascript" src="static/js/jquery.nicescroll.min.js"></script>
 <script type="text/javascript" src="static/js/public.js"></script>
 <!--<script type="text/javascript" src="../../static/jquery/jquery.js"></script>-->
+<script type="text/javascript" src="static/vue/vue.js"></script>
+<script type="text/javascript" src="static/vue/axios.js"></script>
+<script type="text/javascript" src="static/js/demand/update.js"></script>
+
 
 </body>
 </html>

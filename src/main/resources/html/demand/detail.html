@@ -154,49 +154,50 @@
 								<div id="company" class="profile-info-row">
 									<div class="profile-info-name">需求ID</div>
 									<div class="profile-info-value">
-										<span>4</span>
+										<span>{{demand.id}}</span>
 									</div>
 								</div>
 								<div class="profile-info-row">
 									<div class="profile-info-name">提出时间</div>
 									<div class="profile-info-value">
-										<span>2016-07-27 17:37:59</span>
+										<span>{{demand.createDate}}</span>
 									</div>
 								</div>
 								<div class="profile-info-row">
 									<div class="profile-info-name">姓名</div>
 									<div class="profile-info-value">
-										<span>test</span>
+										<span>{{demand.name}}</span>
 									</div>
 								</div>
 								<div class="profile-info-row">
 									<div class="profile-info-name">联系电话</div>
 									<div class="profile-info-value">
-										<span>test</span>
+										<span>{{demand.phone}}</span>
 									</div>
 								</div>
 								<div class="profile-info-row">
 									<div class="profile-info-name">单位名称</div>
 									<div class="profile-info-value">
-										<span>test</span>
+										<span>{{demand.company}}</span>
 									</div>
 								</div>
 								<div class="profile-info-row">
 									<div class="profile-info-name">需求详情</div>
 									<div class="profile-info-value">
-										<span></span>
+										<span>{{demand.description}}</span>
 									</div>
 								</div>
 								<div class="profile-info-row">
 									<div class="profile-info-name">处理状态</div>
 									<div class="profile-info-value">
-										<font color="red">未处理</font>
+										<font v-if="demand.status==0" color="red">未处理</font>
+										<font v-else color="green">已处理</font>
 									</div>
 								</div>
 								<div class="profile-info-row">
 									<div class="profile-info-name">处理结果</div>
 									<div class="profile-info-value">
-										<span></span>
+										<span>{{demand.treatment}}</span>
 									</div>
 								</div>
 							</div>
@@ -255,6 +256,8 @@
 <script type="text/javascript" src="static/js/jquery.nicescroll.min.js"></script>
 <script type="text/javascript" src="static/js/public.js"></script>
 <!--<script type="text/javascript" src="../../static/jquery/jquery.js"></script>-->
-
+<script type="text/javascript" src="static/vue/vue.js"></script>
+<script type="text/javascript" src="static/vue/axios.js"></script>
+<script type="text/javascript" src="static/js/demand/detail.js"></script>
 </body>
 </html>

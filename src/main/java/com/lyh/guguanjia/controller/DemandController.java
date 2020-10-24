@@ -6,6 +6,7 @@ import com.lyh.guguanjia.entity.Demand;
 import com.lyh.guguanjia.entity.Result;
 import com.lyh.guguanjia.service.DemandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,5 +30,15 @@ public class DemandController {
 	@RequestMapping("toupdate")
 	public ModelAndView toupdate(){
 		return new ModelAndView("/demand/update.html");
+	}
+
+	@RequestMapping("update")
+	public Result update(@RequestBody Demand demand){
+		return new Result(service.updateByPrimaryKeySelective(demand));
+	}
+
+	@RequestMapping("todetails")
+	public ModelAndView todetails(){
+		return new ModelAndView("/demand/detail.html");
 	}
 }

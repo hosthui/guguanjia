@@ -220,10 +220,13 @@
                                                             <a class="green" title="处理需求" @click="toUpdate(demand)">
 															<i class="ace-icon fa fa-pencil bigger-130"></i>
 														</a>
-														<a href="detail.html" title="点击查看详情"
-														   data-title="<test>详情" data-mode="detail"
-														   data-width="60%"
-														>查看详情</a>
+														<!--<a href="detail.html" title="点击查看详情"-->
+														   <!--data-title="<test>详情" data-mode="detail"-->
+														   <!--data-width="60%"-->
+                                                           <!--@click="toDetails()">-->
+                                                            <a title="点击查看详情" style="cursor:pointer;"
+                                                               @click="toDetails(demand)">
+                                                            查看详情</a>
 													</div>
 												</td>
 											</tr>
