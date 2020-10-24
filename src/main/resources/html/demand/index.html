@@ -187,390 +187,41 @@
 											</thead>
 
 											<tbody>
-											<tr>
+											<tr v-for="demand in pageInfo.list">
 												<td class="center">
-													test
+													{{demand.name}}
 												</td>
 												<td class="center">
-													test
+                                                    {{demand.phone}}
 												</td>
 												<td class="center">
-													test
+                                                    {{demand.company}}
 												</td>
 												<td class="center">
-
+                                                    {{demand.description}}
 												</td>
 												<td class="center">
-													<font color="red">未处理</font>
+                                                    <span v-if="demand.status==0" style="color: red">未处理</span>
+                                                    <span v-else-if="demand.status==1" style="color: green">已处理</span>
 												</td>
 												<td class="center">
-
+                                                    {{demand.treatment}}
 												</td>
-												<td class="center">2016-07-27 17:37:59</td>
+												<td class="center">{{demand.createDate }}</td>
 												<td class="center">
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="update.html" title="处理需求"
-														   data-mode="page" data-title="需求处理"
-														   data-url="demand/edit/showlayer"
-														   data-data="{id:'4'}"
-														   data-width="60%"
-														>
+														<!--<a class="green" title="处理需求"-->
+														   <!--data-mode="page" data-title="需求处理"-->
+														   <!--data-url="demand/edit/showlayer"-->
+														   <!--data-data="{id:'4'}"-->
+														   <!--data-width="60%"-->
+                                                           <!--@click="toUpdate(demand)"-->
+														<!--&gt;-->
+                                                            <a class="green" title="处理需求" @click="toUpdate(demand)">
 															<i class="ace-icon fa fa-pencil bigger-130"></i>
 														</a>
 														<a href="detail.html" title="点击查看详情"
 														   data-title="<test>详情" data-mode="detail"
-
-														   data-width="60%"
-														>查看详情</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">
-													<font color="red">未处理</font>
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">2016-07-27 17:42:10</td>
-												<td class="center">
-													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="update.html" title="处理需求"
-														   data-mode="page" data-title="需求处理"
-														   data-url="demand/edit/showlayer"
-														   data-data="{id:'5'}"
-														   data-width="60%"
-														>
-															<i class="ace-icon fa fa-pencil bigger-130"></i>
-														</a>
-														<a href="detail.html" title="点击查看详情"
-														   data-title="<test>详情" data-mode="detail"
-														   data-url="demand/detail/showlayer"
-														   data-data="{id:'5'}"
-														   data-width="60%"
-														>查看详情</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													jacky
-												</td>
-												<td class="center">
-													13500375617
-												</td>
-												<td class="center">
-													天思博瑞
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">
-													<font color="red">未处理</font>
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">2016-08-24 14:56:39</td>
-												<td class="center">
-													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="update.html" title="处理需求"
-														   data-mode="page" data-title="需求处理"
-														   data-url="demand/edit/showlayer"
-														   data-data="{id:'6'}"
-														   data-width="60%"
-														>
-															<i class="ace-icon fa fa-pencil bigger-130"></i>
-														</a>
-														<a href="detail.html" title="点击查看详情"
-														   data-title="<jacky>详情" data-mode="detail"
-														   data-url="demand/detail/showlayer"
-														   data-data="{id:'6'}"
-														   data-width="60%"
-														>查看详情</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-													13500375617
-												</td>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">
-													<font color="red">未处理</font>
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">2016-09-10 15:35:56</td>
-												<td class="center">
-													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="update.html" title="处理需求"
-														   data-mode="page" data-title="需求处理"
-														   data-url="demand/edit/showlayer"
-														   data-data="{id:'7'}"
-														   data-width="60%"
-														>
-															<i class="ace-icon fa fa-pencil bigger-130"></i>
-														</a>
-														<a href="detail.html" title="点击查看详情"
-														   data-title="<test>详情" data-mode="detail"
-														   data-url="demand/detail/showlayer"
-														   data-data="{id:'7'}"
-														   data-width="60%"
-														>查看详情</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-													13500375617
-												</td>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-													描述内容
-												</td>
-												<td class="center">
-													<font color="red">未处理</font>
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">2016-09-10 15:37:05</td>
-												<td class="center">
-													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="update.html" title="处理需求"
-														   data-mode="page" data-title="需求处理"
-														   data-url="demand/edit/showlayer"
-														   data-data="{id:'8'}"
-														   data-width="60%"
-														>
-															<i class="ace-icon fa fa-pencil bigger-130"></i>
-														</a>
-														<a href="detail.html" title="点击查看详情"
-														   data-title="<test>详情" data-mode="detail"
-														   data-url="demand/detail/showlayer"
-														   data-data="{id:'8'}"
-														   data-width="60%"
-														>查看详情</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													易君
-												</td>
-												<td class="center">
-													13888888888
-												</td>
-												<td class="center">
-													中软国际
-												</td>
-												<td class="center">
-													一级棒还好还好
-												</td>
-												<td class="center">
-													<font color="red">未处理</font>
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">2017-03-11 12:04:42</td>
-												<td class="center">
-													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="update.html" title="处理需求"
-														   data-mode="page" data-title="需求处理"
-														   data-url="demand/edit/showlayer"
-														   data-data="{id:'9'}"
-														   data-width="60%"
-														>
-															<i class="ace-icon fa fa-pencil bigger-130"></i>
-														</a>
-														<a href="detail.html" title="点击查看详情"
-														   data-title="<易君>详情" data-mode="detail"
-														   data-url="demand/detail/showlayer"
-														   data-data="{id:'9'}"
-														   data-width="60%"
-														>查看详情</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													张飞
-												</td>
-												<td class="center">
-													13888888888
-												</td>
-												<td class="center">
-													账户管理有限公司
-												</td>
-												<td class="center">
-													我需要服务测试
-												</td>
-												<td class="center">
-													<font color="red">未处理</font>
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">2017-03-16 15:05:00</td>
-												<td class="center">
-													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="update.html" title="处理需求"
-														   data-mode="page" data-title="需求处理"
-														   data-url="demand/edit/showlayer"
-														   data-data="{id:'10'}"
-														   data-width="60%"
-														>
-															<i class="ace-icon fa fa-pencil bigger-130"></i>
-														</a>
-														<a href="detail.html" title="点击查看详情"
-														   data-title="<张飞>详情" data-mode="detail"
-														   data-url="demand/detail/showlayer"
-														   data-data="{id:'10'}"
-														   data-width="60%"
-														>查看详情</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">
-													<font color="green">已处理</font>
-												</td>
-												<td class="center">
-													13123
-												</td>
-												<td class="center">2016-07-27 16:25:31</td>
-												<td class="center">
-													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="update.html" title="处理需求"
-														   data-mode="page" data-title="需求处理"
-														   data-url="demand/edit/showlayer"
-														   data-data="{id:'1'}"
-														   data-width="60%"
-														>
-															<i class="ace-icon fa fa-pencil bigger-130"></i>
-														</a>
-														<a href="detail.html" title="点击查看详情"
-														   data-title="<test>详情" data-mode="detail"
-														   data-url="demand/detail/showlayer"
-														   data-data="{id:'1'}"
-														   data-width="60%"
-														>查看详情</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">
-													<font color="green">已处理</font>
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">2016-07-27 16:59:18</td>
-												<td class="center">
-													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="update.html" title="处理需求"
-														   data-mode="page" data-title="需求处理"
-														   data-url="demand/edit/showlayer"
-														   data-data="{id:'2'}"
-														   data-width="60%"
-														>
-															<i class="ace-icon fa fa-pencil bigger-130"></i>
-														</a>
-														<a href="detail.html" title="点击查看详情"
-														   data-title="<test>详情" data-mode="detail"
-														   data-url="demand/detail/showlayer"
-														   data-data="{id:'2'}"
-														   data-width="60%"
-														>查看详情</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-													test
-												</td>
-												<td class="center">
-
-												</td>
-												<td class="center">
-													<font color="green">已处理</font>
-												</td>
-												<td class="center">
-													12323
-												</td>
-												<td class="center">2016-07-27 17:37:42</td>
-												<td class="center">
-													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="update.html" title="处理需求"
-														   data-mode="page" data-title="需求处理"
-														   data-url="demand/edit/showlayer"
-														   data-data="{id:'3'}"
-														   data-width="60%"
-														>
-															<i class="ace-icon fa fa-pencil bigger-130"></i>
-														</a>
-														<a href="detail.html" title="点击查看详情"
-														   data-title="<test>详情" data-mode="detail"
-														   data-url="demand/detail/showlayer"
-														   data-data="{id:'3'}"
 														   data-width="60%"
 														>查看详情</a>
 													</div>
@@ -584,17 +235,25 @@
 											<div style="float: left;">
 												<div style="padding-top:5px;">
 			<span class="badge badge-info">
-				当前第 1 页 / 1 页，共 10 条数据
+				当前第 {{pageInfo.pageNum}} 页 / {{pageInfo.pages}} 页，共
+                {{pageInfo.total}} 条数据
 			</span>
 												</div>
 											</div>
 											<div>
 												<div class="pagination no-margin pull-right clearfix">
-													<li class="prev disabled"><a href="javascript:void(0);" onclick="">首页</a></li>
-													<li class="prev disabled"><a href="javascript:void(0);" onclick="">上一页</a></li>
-													<li class="active"><a href="javascript:void(0);" onclick="">1</a></li>
-													<li class="next disabled"><a href="javascript:void(0);" onclick="">下一页</a></li>
-													<li class="next disabled"><a href="javascript:void(0);" onclick="">尾页</a></li>
+                                                    <li class="prev "><a href="javascript:void(0);" @click="selectAll()">首页</a></li>
+
+                                                    <li v-if="pageInfo.hasPreviousPage" class="prev"><a href="javascript:void(0);" @click="selectAll(pageInfo.prePage,pageInfo.pageSize)">上一页</a></li>
+                                                    <li v-else class="prev disabled"><a href="javascript:void(0);">上一页</a></li>
+
+                                                    <li :class="pageInfo.pageNum==p?'active':''" v-for="p in pageInfo.navigatepageNums"><a href="javascript:void(0);"  @click="selectAll(p,pageInfo.pageSize)">{{p}}</a></li>
+
+                                                    <li v-if="pageInfo.hasNextPage" class="next"><a href="javascript:void(0);" @click="selectAll(pageInfo.nextPage,pageInfo.pageSize)">下一页</a></li>
+                                                    <li v-else class="next disabled"><a href="javascript:void(0);">下一页</a></li>
+
+
+                                                    <li class="next "><a href="javascript:void(0);" @click="selectAll(pageInfo.pages,pageInfo.pageSize)">尾页</a></li>
 												</div>
 
 											</div>
@@ -681,6 +340,8 @@
 <script type="text/javascript" src="static/js/jquery.nicescroll.min.js"></script>
 <script type="text/javascript" src="static/js/public.js"></script>
 <!--<script type="text/javascript" src="../../static/jquery/jquery.js"></script>-->
+<script type="text/javascript" src="static/vue/vue.js"></script>
+<script type="text/javascript" src="static/vue/axios.js"></script>
 <script type="text/javascript" src="static/js/demand/index.js"></script>
 
 </body>
