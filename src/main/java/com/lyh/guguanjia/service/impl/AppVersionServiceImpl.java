@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 @Transactional
 public class AppVersionServiceImpl extends BaseServiceImpl<AppVersion,Long>  implements AppVersionService{
-	@Override
+ 	@Override
 	public PageInfo<AppVersion> selectPage(int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum,pageSize);
 		AppVersion appVersion = new AppVersion();
