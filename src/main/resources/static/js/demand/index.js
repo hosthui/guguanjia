@@ -25,7 +25,7 @@ let vm=new Vue({
                 area: ['80%', '80%'],
                 content: 'manager/demand/toupdate',
                 end:()=>{
-                    this.selectAll()
+                    // this.selectAll()
                 }
             })
         },
