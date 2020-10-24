@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
+
 
 @RestController
 @RequestMapping("/manager/app")
@@ -35,7 +37,11 @@ public class AppVersionController {
 
 	@RequestMapping(value = "insert",method = RequestMethod.POST)
 	public Result add(@RequestBody  AppVersion app){
+		Date date = new Date();
+		app.setCreateDate(date);
+		app.setUpdateDate(date);
+		app.setDelFlag("0");
+		app.setCreateBy("sys");
 		return new Result(service.insertSelective(app));
 	}
-
 }

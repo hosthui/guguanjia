@@ -18,7 +18,10 @@ public class AppVersionServiceImpl extends BaseServiceImpl<AppVersion,Long>  imp
 	@Override
 	public PageInfo<AppVersion> selectPage(int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum,pageSize);
-		List<AppVersion> appVersions = mapper.selectAll();
+		AppVersion appVersion = new AppVersion();
+		appVersion.setDelFlag("0");
+//		List<AppVersion> appVersions = mapper.selectAll();
+		List<AppVersion> appVersions = mapper.select(appVersion);
 		PageInfo<AppVersion> appVersionPageInfo = new PageInfo<>(appVersions);
 		return appVersionPageInfo;
 	}

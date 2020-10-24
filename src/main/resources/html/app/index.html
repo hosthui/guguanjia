@@ -701,17 +701,19 @@
 					<div id="fill-main-content" style="height:100%">
 						<div class="tabbable">
 							<ul class="nav nav-tabs" id="myTab">
-								<li class="active">
+								<li :class="actives==false?'active':''">
 									<a data-toggle="tab" href="#home">
 										<i class="green ace-icon fa fa-users bigger-120"></i> 版本列表
 									</a>
 								</li>
-								<li class=""><a data-toggle="tab" href="#profile">
+								<li :class="!actives==false?'active':''">
+                                    <a data-toggle="tab" href="#profile">
 									<i class="green ace-icon fa fa-plus bigger-120"></i> 版本添加
 								</a></li>
 							</ul>
 							<div class="tab-content">
-								<div id="home" class="tab-pane active clearfix">
+								<div id="home" class="tab-pane  clearfix"
+                                     :class="actives==false?'active':''">
 									<form action="app/list" method="post" id="search-form"
 										  target="list-page" class="center clearfix">
 										<input type="button" id="search-btn" style="display: none"/>
@@ -746,7 +748,8 @@
 												<td class="center"><a :href="app.downPath">{{app.downPath}}</a></td>
 												<td class="center">{{app.size}}</td>
 												<td class="center">{{app.appExplain}}</td>
-												<td class="center">{{app.createDate}}</td>
+												<td
+                                                        class="center">{{app.createDate}}</td>
 												<td class="center">
 													<div class="hidden-sm hidden-xs action-buttons">
 														<a class="green"
@@ -754,7 +757,8 @@
                                                            title="编辑" >
 															<i class="ace-icon fa fa-pencil bigger-130"></i>
 														</a>
-														<a class="red" href="javascript:void(0);" title="删除" >
+														<a class="red"
+                                                           href="javascript:void(0);" title="删除" @click="toDel(app)">
 
 															<i class="ace-icon fa fa-trash-o bigger-130"></i>
 														</a>
@@ -778,31 +782,31 @@
 												<div class="pagination no-margin pull-right clearfix">
 													<li class="prev "><a href="javascript:void(0);" @click="selectAll()">首页</a></li>
 
-													<li v-if="pageInfo.hasPreviousPage" class="prev"><a href="javascript:void(0);" @click="selectAll(pageInfo.prePage,pageInfo.size)">上一页</a></li>
+													<li
+                                                            v-if="pageInfo.hasPreviousPage" class="prev"><a href="javascript:void(0);" @click="selectAll(pageInfo.prePage,pageInfo.pageSize)">上一页</a></li>
                                                     <li v-else class="prev disabled"><a href="javascript:void(0);">上一页</a></li>
 
-													<li
-                                                            :class="pageInfo.pageNum==p?'active':''" v-for="p in pageInfo.navigatepageNums"><a href="javascript:void(0);"  @click="selectAll(p,pageInfo.size)">{{p}}</a></li>
+													<li :class="pageInfo.pageNum==p?'active':''" v-for="p in pageInfo.navigatepageNums"><a href="javascript:void(0);"  @click="selectAll(p,pageInfo.pageSize)">{{p}}</a></li>
 
-													<li v-if="pageInfo.hasNextPage" class="next"><a href="javascript:void(0);" @click="selectAll(pageInfo.nextPage,pageInfo.size)">下一页</a></li>
+													<li v-if="pageInfo.hasNextPage" class="next"><a href="javascript:void(0);" @click="selectAll(pageInfo.nextPage,pageInfo.pageSize)">下一页</a></li>
                                                     <li v-else class="next disabled"><a href="javascript:void(0);">下一页</a></li>
 
 
-													<li class="next "><a href="javascript:void(0);" @click="selectAll(pageInfo.pages,pageInfo.size)">尾页</a></li>
+													<li class="next "><a href="javascript:void(0);" @click="selectAll(pageInfo.pages,pageInfo.pageSize)">尾页</a></li>
 												</div>
 
 											</div>
 										</div>
 									</div>
 								</div>
-								<div id="profile" class="tab-pane">
+								<div id="profile" class="tab-pane" :class="!actives==false?'active':''">
 									<form  method="post" id="app-save-form">
 										<div class="center padding-10">
 											<label>系统平台：</label>
 											<select name="platform"
                                                     class="width-50"
                                                     v-model="app.platform">
-												<option value="0" selected>Android</option>
+												<option value="0">Android</option>
 												<option value="1">IOS</option>
 											</select>
 										</div>
@@ -811,7 +815,7 @@
 											<select name="forceUpdate"
                                                     class="width-50"
                                                     v-model="app.forceUpdate">
-												<option value="0" selected>否</option>
+												<option value="0">否</option>
 												<option value="1">是</option>
 											</select>
 										</div>
