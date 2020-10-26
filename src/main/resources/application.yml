@@ -21,5 +21,7 @@ server:
   servlet:
     context-path: /guguanjia
 
-
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
 
