@@ -23,6 +23,7 @@ let vm = new Vue({
                 method:"put",
                 data:this.qualification
             }).then(response=>{
+                parent.layer.success=response.data.success
                 let index=parent.layer.getFrameIndex(window.name)
                 parent.layer.msg("更新成功")
                 parent.layer.close(index)

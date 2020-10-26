@@ -42,7 +42,11 @@ public class QualificationController {
 
 	@RequestMapping("quUpdate")
 	public Result quupdate(@RequestBody Qualification qualification){
-		service.updateByPrimaryKeySelective(qualification);
-		return new Result();
+		int i = service.updateByPrimaryKeySelective(qualification);
+		Result result = new Result();
+		if ( i>0 ){
+			result.setSuccess(true);
+		}
+		return result;
 	}
 }

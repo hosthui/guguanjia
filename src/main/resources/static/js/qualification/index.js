@@ -19,8 +19,16 @@ let vm = new Vue({
                 layer.msg(error.message);
             });
         },
+        clearcon:function(){
+            this.condition={
+                type:"",
+                check:""
+            }
+            this.selectAll()
+        },
         toUpdate: function (qu) {
             layer.obj = qu;//将appVersion传递到layer对象的obj属性中,obj自动有getter/setter方法(此处就是调用了get方法获取user并set数据)
+            layer.success=false
             layer.open({
                 type: 2,//样式类型
                 title: false,//标题
@@ -29,7 +37,10 @@ let vm = new Vue({
                 area: ["80%", "80%"],//宽高占比(相对于父窗口的比例)
                 content: "manager/qualification/toUpdate",//弹出层展示toUpdate视图
                 end:  ()=> {
-                    this.selectAll(this.pageInfo.pageNum,this.pageInfo.pageSize)
+                    if (layer.success){
+                        this.selectAll(this.pageInfo.pageNum,this.pageInfo.pageSize)
+                    }
+
                 }//关闭弹出层后调用
             })
         }

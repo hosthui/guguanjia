@@ -48,7 +48,7 @@ let vm = new Vue({
                 area: ['80%', '80%'],
                 content: 'manager/app/toupdate',
                 end: ()=> {
-                    // this.selectAll();
+                    this.selectAll(this.pageInfo.pageNum,this.pageInfo.pageSize)
                 }
             })
         },
