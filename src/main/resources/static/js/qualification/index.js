@@ -28,8 +28,8 @@ let vm = new Vue({
                 shade: 0.1,//设置窗口影影
                 area: ["80%", "80%"],//宽高占比(相对于父窗口的比例)
                 content: "manager/qualification/toUpdate",//弹出层展示toUpdate视图
-                end: function () {
-                    // this.selectAll()
+                end:  ()=> {
+                    this.selectAll(this.pageInfo.pageNum,this.pageInfo.pageSize)
                 }//关闭弹出层后调用
             })
         }

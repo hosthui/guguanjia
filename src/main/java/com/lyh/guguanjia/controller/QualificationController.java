@@ -39,4 +39,10 @@ public class QualificationController {
 		qualification.setAddress(syspath+sysUser.getCompanyId()+"/"+qualification.getAddress());
 		return new Result(qualification);
 	}
+
+	@RequestMapping("quUpdate")
+	public Result quupdate(@RequestBody Qualification qualification){
+		service.updateByPrimaryKeySelective(qualification);
+		return new Result();
+	}
 }

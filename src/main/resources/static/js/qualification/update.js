@@ -15,14 +15,17 @@ let vm = new Vue({
 
             })
         },
-        quUpdate:function () {
+        quUpdate:function (check) {
+            this.qualification.check=check;
             this.qualification.address=null;
             axios({
-                url:"",
+                url:"manager/qualification/quUpdate",
                 method:"put",
                 data:this.qualification
             }).then(response=>{
-
+                let index=parent.layer.getFrameIndex(window.name)
+                parent.layer.msg("更新成功")
+                parent.layer.close(index)
             }).catch(error=>{
 
             })

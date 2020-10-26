@@ -84,10 +84,12 @@
                         </div>
                     </div>
                     <div class="width-100 clearfix tag-save-btn"  >
-                        <span class="btn btn-primary btn-sm bigger-110 width-50  pull-left" action="examine" id="leftButton" >
+                        <span
+                                class="btn btn-primary btn-sm bigger-110 width-50  pull-left" action="examine" id="leftButton" @click="quUpdate(1)">
                             <i class="ace-icon fa fa-floppy-o align-top bigger-125"></i><span id="leftButtonText">通过</span>
                         </span>
-                            <span class="btn btn-yellow btn-sm bigger-110 width-50 pull-right" action="unexamine" id="rightButton"  >
+                            <span
+                                    class="btn btn-yellow btn-sm bigger-110 width-50 pull-right" action="unexamine" id="rightButton"  @click="quUpdate(2)">
                             <i class="ace-icon fa fa-times align-top  bigger-125"></i>不通过
                         </span>
                     </div>
