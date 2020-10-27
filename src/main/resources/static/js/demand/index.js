@@ -17,6 +17,7 @@ let vm=new Vue({
         },
         toUpdate:function (data) {
             layer.obj=data
+            layer.success=false
             layer.open({
                 type:2,
                 title:false,

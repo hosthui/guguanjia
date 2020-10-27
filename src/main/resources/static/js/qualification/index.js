@@ -40,7 +40,6 @@ let vm = new Vue({
                     if (layer.success){
                         this.selectAll(this.pageInfo.pageNum,this.pageInfo.pageSize)
                     }
-
                 }//关闭弹出层后调用
             })
         }
