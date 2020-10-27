@@ -56,8 +56,6 @@ let vm = new Vue({
             }).catch(error=>{
 
             })
-
-
         },
         onclick:function (event,treeId,treeNode) {
             this.condition.name=treeNode.name;
