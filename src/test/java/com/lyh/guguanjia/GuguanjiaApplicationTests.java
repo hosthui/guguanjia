@@ -85,5 +85,13 @@ class GuguanjiaApplicationTests {
 			System.out.println(workOrder);
 		}
 	}
+	@Test
+	public void testservice05(){
+		Map<String, Object> selectdetail = workOrderService.selectdetail(5);
+		selectdetail.forEach((key,value)->{
+			System.out.println(key+"  "+value);
+		});
+
+	}
 
 }

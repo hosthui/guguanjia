@@ -33,4 +33,7 @@ server:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+    object-wrapper-factory: com.lyh.guguanjia.util.MapWrapperFactory
+
 

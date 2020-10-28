@@ -45,5 +45,9 @@ public class WorkOrderController {
 	public ModelAndView toDetail(){
 		return new ModelAndView("/work/detail.html");
 	}
+	@RequestMapping("alldetail/{id}")
+	public Map<String,Object> allDetail(@PathVariable int id){
+		return workOrderService.selectdetail(id);
+	}
 
 }

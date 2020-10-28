@@ -28,4 +28,14 @@ public class WorkOrderServiceImpl extends BaseServiceImpl<WorkOrder,Long> implem
 		List<WorkOrder> selectpage = workOrderMapper.selectpage(workCondition);
 		return new PageInfo<>(selectpage);
 	}
+
+	@Override
+	public Map<String, Object> selectdetail(Integer id) {
+		Map<String, Object> workOrderMap = workOrderMapper.selectbyId(id);
+		List<Map<String, Object>> selectdetailbyId = workOrderMapper.selectdetailbyId(id);
+		List<Map<String, Object>> selecttransferbyId = workOrderMapper.selecttransferbyId(id);
+		workOrderMap.put("detail",selectdetailbyId);
+		workOrderMap.put("transfer",selecttransferbyId);
+		return workOrderMap;
+	}
 }
