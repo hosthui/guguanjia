@@ -6,13 +6,16 @@ import com.lyh.guguanjia.mapper.AppVersionMapper;
 import com.lyh.guguanjia.service.AppVersionService;
 import com.lyh.guguanjia.service.ExamineService;
 import com.lyh.guguanjia.service.QualificationService;
+import com.lyh.guguanjia.service.WorkOrderService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 class GuguanjiaApplicationTests {
@@ -31,6 +34,9 @@ class GuguanjiaApplicationTests {
 
 	@Autowired
 	ExamineService examineService;
+
+	@Autowired
+	WorkOrderService workOrderService;
 
 	@Test
 	void contextLoads() throws SQLException {
@@ -61,12 +67,22 @@ class GuguanjiaApplicationTests {
 			System.out.println(qualification);
 		}
 	}
-	@Test void testservice03(){
+	@Test
+	public void testservice03(){
 		ExamineCondition examineCondition = new ExamineCondition();
 		examineCondition.setOfficeid("56");
 		PageInfo<Examine> s = examineService.selectpage(1, 3, examineCondition);
 		for ( Examine examine : s.getList() ) {
 			System.out.println(examine);
+		}
+	}
+	@Test
+	public void testservice04(){
+		Map<String,String> hashMap = new HashMap();
+		hashMap.put("officeid","55");
+		PageInfo<WorkOrder> selectpage = workOrderService.selectpage(1, 3, hashMap);
+		for ( WorkOrder workOrder : selectpage.getList() ) {
+			System.out.println(workOrder);
 		}
 	}
 

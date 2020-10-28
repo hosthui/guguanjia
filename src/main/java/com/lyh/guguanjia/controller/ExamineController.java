@@ -3,8 +3,9 @@ package com.lyh.guguanjia.controller;
 
 import com.lyh.guguanjia.entity.ExamineCondition;
 import com.lyh.guguanjia.entity.Result;
-import com.lyh.guguanjia.mapper.SysOfficeMapper;
+import com.lyh.guguanjia.entity.SysOffice;
 import com.lyh.guguanjia.service.ExamineService;
+import com.lyh.guguanjia.service.SysOfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,9 @@ public class ExamineController {
 	ExamineService examineService;
 
 	@Autowired
-	SysOfficeMapper mapper;
+	SysOfficeService service;
+
+
 
 	@RequestMapping("selectAll/{pageNum}/{pageSize}")
 	public Result selectall(@PathVariable int pageNum,
@@ -27,9 +30,8 @@ public class ExamineController {
 	}
 	@RequestMapping("allOffice")
 	public Result alloffice(){
-		return new Result(mapper.selectAll());
+		SysOffice sysOffice = new SysOffice();
+		sysOffice.setDelFlag("0");
+		return new Result(service.select(sysOffice));
 	}
-
-
-
 }
