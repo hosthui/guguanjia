@@ -3,10 +3,7 @@ package com.lyh.guguanjia;
 import com.github.pagehelper.PageInfo;
 import com.lyh.guguanjia.entity.*;
 import com.lyh.guguanjia.mapper.AppVersionMapper;
-import com.lyh.guguanjia.service.AppVersionService;
-import com.lyh.guguanjia.service.ExamineService;
-import com.lyh.guguanjia.service.QualificationService;
-import com.lyh.guguanjia.service.WorkOrderService;
+import com.lyh.guguanjia.service.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,6 +34,9 @@ class GuguanjiaApplicationTests {
 
 	@Autowired
 	WorkOrderService workOrderService;
+
+	@Autowired
+	StatuteService statuteService;
 
 	@Test
 	void contextLoads() throws SQLException {
@@ -92,6 +92,16 @@ class GuguanjiaApplicationTests {
 			System.out.println(key+"  "+value);
 		});
 
+	}
+	@Test
+	public void testservice06(){
+		Statute statute = new Statute();
+		statute.setType(1);
+		PageInfo<Statute> selectpage = statuteService.selectpage(1, 3, statute);
+		for ( Statute statute1 : selectpage.getList() ) {
+
+			System.out.println(statute1);
+		}
 	}
 
 }
