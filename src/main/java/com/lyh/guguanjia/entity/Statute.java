@@ -23,7 +23,7 @@ public class Statute {
     private String title;
 
     @Column(name = "pub_date")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "CTT")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "CTT")
     private Date pubDate;
 
     private String code;
@@ -41,6 +41,7 @@ public class Statute {
      * 数据修改时间,在数据新增时和修改时设置
      */
     @Column(name = "update_date")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "CTT")
     private Date updateDate;
 
     /**
