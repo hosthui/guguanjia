@@ -100,8 +100,8 @@ let vm = new Vue({
             alert("添加")
         },
         toUpdate:function (data) {
-            
             layer.obj=data;
+            layer.success=false;
             layer.open({
                 type: 2,
                 title:false,
@@ -110,7 +110,9 @@ let vm = new Vue({
                 area: ['80%', '80%'],
                 content: 'manager/area/toupdate',
                 end: ()=> {
-                    this.selectAll(this.pageInfo.pageNum,this.pageInfo.pageSize)
+                    if (layer.success){
+                        this.selectAll(this.pageInfo.pageNum,this.pageInfo.pageSize)
+                    }
                 }
             })
         }

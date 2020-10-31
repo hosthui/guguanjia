@@ -125,10 +125,11 @@
                                             <td class="DataTD">
                                                 <div class="width-100 clearfix ">
                                                     <input type="hidden" value="fa fa-smile-o" name="icon"
-                                                           id="icon-input">
+                                                           id="icon-input" v-model="area.icon">
                                                     <i class="ace-icon   bigger-200 pink" :class="area.icon"
                                                        style="vertical-align: middle;padding-right: 10px;"></i>
-                                                    <span class="btn btn-sm btn-purple" id="icon-icon-btn" @click="toModules">
+                                                    <span
+                                                            class="btn btn-sm btn-purple" id="icon-icon-btn" @click="toModules(area.icon)">
 		<i class="ace-icon fa fa-search bigger-110"></i>查找
 	</span>
                                                 </div>
@@ -149,7 +150,8 @@
 
                             <div class="width-100 clearfix" tag-save-btn=""
                                  style="bottom: -36px; left: 0px; position: absolute;">
-	<span class="btn btn-primary btn-sm bigger-110 width-50  pull-left" id="area-save-save" @click="doUpdate">
+	<span class="btn btn-primary btn-sm bigger-110 width-50  pull-left"
+          id="area-save-save" @click="doUpdate()">
 		<i class="ace-icon fa fa-floppy-o align-top bigger-125"></i> 确 定
 	</span>
                                 <span class="btn btn-yellow btn-sm bigger-110 width-50 pull-right"

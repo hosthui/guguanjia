@@ -18,6 +18,33 @@ let vm = new Vue({
                     this.area.parentName=layer.parentName
                 }
             })
+        },
+        toModules:function (icon) {
+            layer.icon=icon;
+            layer.open({
+                type: 2,
+                title:false,
+                shadeClose: true,
+                shade: 0.1,
+                area: ['100%', '100%'],
+                content: 'manager/area/tomodules',
+                end: ()=> {
+                    this.area.icon=layer.icon
+                }
+            })
+        },
+        doUpdate:function () {
+            axios({
+                url:"manager/area/doupdate",
+                method:"put",
+                data:this.area
+            }).then(response=>{
+                parent.layer.success=response.data.success
+                let index=parent.layer.getFrameIndex(window.name)
+                parent.layer.msg("更新成功")
+                parent.layer.close(index)
+            })
+
         }
         /*toDel: function (app) {
             app.delFlag = 1
