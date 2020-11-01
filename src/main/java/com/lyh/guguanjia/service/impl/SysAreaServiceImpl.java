@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +26,11 @@ public class SysAreaServiceImpl extends BaseServiceImpl<SysArea,Long> implements
 		PageHelper.startPage(pageNum,pageSize);
 		List<SysArea> sysAreas = sysAreaMapper.selectpage(areacondition);
 		return new PageInfo<>(sysAreas);
+	}
 
+	@Qualifier
+	public List<SysArea> selectall(){
+		return sysAreaMapper.selectpage(new HashMap<>());
 	}
 	
 }

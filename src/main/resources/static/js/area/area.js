@@ -16,6 +16,7 @@ let vm = new Vue({
                 },
                 callback: {
                     beforeEditName: this.editclick,
+                    beforeRemove:this.removeclick,
                     onClick:this.selectbyid
                 },
                 view: {
@@ -70,8 +71,12 @@ let vm = new Vue({
             }
         },
         editclick: function (treeId, treeNode) {
-            console.log(treeNode)
+           this.toUpdate(treeNode)
             return false;
+        },
+        removeclick:function(treeId, treeNode){
+            return this.doDelete(treeNode)
+
         },
         selectbyid:function(event, treeId, treeNode){
             this.params= {
@@ -80,7 +85,6 @@ let vm = new Vue({
             this.selectAll();
         },
         setaddHoverDom: function (treeId, treeNode) {
-            console.log(treeNode)
             let tid = treeNode.tId;
             let spanobj = $(`#${tid}_add`);
             if (spanobj.length>0){
@@ -115,6 +119,24 @@ let vm = new Vue({
                     }
                 }
             })
+        },
+        doDelete:function (area) {
+            layer.msg('确定删除？', {
+                time: 20000 //不自动关闭
+                ,btn: ['确定', '取消']
+                ,yes:() =>{
+                    area.delFlag=1
+                    axios({
+                        url:"manager/area/doupdate",
+                        method:"put",
+                        data:area
+                    }).then(request=>{
+                        layer.msg(request.data.msg)
+                        this.selectAll(this.pageInfo.pageNum,this.pageInfo.pageSize)
+                        return request.data.success;
+                    })
+                }
+            });
         }
     },
     created:

@@ -4,6 +4,7 @@ package com.lyh.guguanjia.controller;
 import com.lyh.guguanjia.entity.Result;
 import com.lyh.guguanjia.entity.SysArea;
 import com.lyh.guguanjia.service.SysAreaService;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,7 +28,7 @@ public class AreaController {
 
 	@RequestMapping("areaAll")
 	public Result areaall(){
-		return new Result(sysAreaService.selectAll());
+		return new Result(sysAreaService.selectall());
 	}
 	@RequestMapping("toupdate")
 	public ModelAndView toupdate(){
@@ -42,6 +43,7 @@ public class AreaController {
 		Result result = new Result();
 		if ( i>0 ){
 			result.setSuccess(true);
+			result.setMsg("操作成功");
 		}
 		return result;
 	}
