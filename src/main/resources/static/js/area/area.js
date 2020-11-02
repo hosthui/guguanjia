@@ -75,7 +75,8 @@ let vm = new Vue({
             return false;
         },
         removeclick:function(treeId, treeNode){
-            return this.doDelete(treeNode)
+            this.doDelete(treeNode)
+            return false;
 
         },
         selectbyid:function(event, treeId, treeNode){
@@ -116,6 +117,7 @@ let vm = new Vue({
                 end: ()=> {
                     if (layer.success){
                         this.selectAll(this.pageInfo.pageNum,this.pageInfo.pageSize)
+                        this.init()
                     }
                 }
             })
@@ -133,7 +135,7 @@ let vm = new Vue({
                     }).then(request=>{
                         layer.msg(request.data.msg)
                         this.selectAll(this.pageInfo.pageNum,this.pageInfo.pageSize)
-                        return request.data.success;
+                        this.init()
                     })
                 }
             });

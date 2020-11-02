@@ -12,4 +12,6 @@ public interface SysAreaService extends BaseService<SysArea,Long> {
 	                             Map<String,String> areacondition);
 
 	List<SysArea> selectall();
+
+	int updateByPrimaryKeySelective(SysArea sysArea);
 }

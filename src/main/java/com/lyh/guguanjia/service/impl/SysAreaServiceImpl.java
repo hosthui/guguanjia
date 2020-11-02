@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,5 +33,17 @@ public class SysAreaServiceImpl extends BaseServiceImpl<SysArea,Long> implements
 	public List<SysArea> selectall(){
 		return sysAreaMapper.selectpage(new HashMap<>());
 	}
-	
+
+	@Override
+	public int updateByPrimaryKeySelective(SysArea sysArea) {
+			sysAreaMapper.updateByPrimaryKeySelective(sysArea);
+		if ( !StringUtils.isEmpty(sysArea.getParentOldIds()) ){
+			if ( !sysArea.getParentOldIds().equals(sysArea.getParentIds()) ){
+				sysAreaMapper.updatebyparentids(sysArea.getId(),
+						sysArea.getParentIds(),sysArea.getParentOldIds());
+				return 2;
+			}
+		}
+		return 1;
+	}
 }
