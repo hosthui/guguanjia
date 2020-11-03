@@ -4,7 +4,6 @@ package com.lyh.guguanjia.controller;
 import com.lyh.guguanjia.entity.Result;
 import com.lyh.guguanjia.entity.SysArea;
 import com.lyh.guguanjia.service.SysAreaService;
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,6 +46,7 @@ public class AreaController {
 		}
 		return result;
 	}
+
 
 
 	@RequestMapping("toselect")

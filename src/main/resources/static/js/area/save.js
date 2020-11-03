@@ -16,6 +16,8 @@ let vm = new Vue({
                 content: 'manager/area/toselect',
                 end: ()=> {
                     this.area.parentName=layer.parentName
+                    this.area.parentId=layer.id
+                    this.area.parentIds=layer.parentIds
                 }
             })
         },
@@ -69,5 +71,6 @@ let vm = new Vue({
     },
     created: function () {
         this.area=parent.layer.obj
+        this.area.parentOldIds=this.area.parentIds
     }
 });

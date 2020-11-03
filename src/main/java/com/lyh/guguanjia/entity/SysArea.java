@@ -85,6 +85,16 @@ public class SysArea {
     @Transient
     private String parentName;
 
+    @Transient
+    private String parentOldIds;
+
+	public String getParentOldIds() {
+		return parentOldIds;
+	}
+
+	public void setParentOldIds(String parentOldIds) {
+		this.parentOldIds = parentOldIds;
+	}
 
 	public String getParentName() {
 		return parentName;
