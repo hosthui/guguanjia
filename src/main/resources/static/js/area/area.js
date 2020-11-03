@@ -139,6 +139,25 @@ let vm = new Vue({
                     })
                 }
             });
+        },
+        download:function () {
+            window.location.href="manager/area/download"
+        },
+        upload:function (e) {
+            let file=e.target.files[0]
+            let formData = new FormData;
+            formData.append("file",file);
+            axios({
+                url:"manager/area/upload",
+                method:"post",
+                data:formData,
+                headers:{
+                    "content-type":"multipart/form-data"
+                }
+            }).then(request=>{
+                layer.msg(request.data.msg)
+                this.selectAll()
+            })
         }
     },
     created:

@@ -6,8 +6,11 @@ import com.lyh.guguanjia.entity.SysArea;
 import com.lyh.guguanjia.service.SysAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 
@@ -48,6 +51,23 @@ public class AreaController {
 	}
 
 
+	@RequestMapping("download")
+	public void download(HttpServletResponse response) throws IOException {
+		response.setHeader("Content-Disposition",
+				"attachment;filename="+new String("区域信息.xlsx".getBytes(),
+						"iso8859-1"));
+		sysAreaService.download(response.getOutputStream());
+
+	}
+
+
+	@RequestMapping(value = "upload",method = RequestMethod.POST)
+	public Result upload(MultipartFile file) throws IOException {
+			sysAreaService.upload(file.getInputStream());
+		Result result = new Result(null);
+		result.setMsg("导入成功");
+		return result;
+	}
 
 	@RequestMapping("toselect")
 	public ModelAndView toselect(){

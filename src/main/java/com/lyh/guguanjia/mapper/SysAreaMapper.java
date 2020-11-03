@@ -1,6 +1,7 @@
 package com.lyh.guguanjia.mapper;
 
 import com.lyh.guguanjia.entity.SysArea;
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
@@ -21,4 +22,7 @@ public interface SysAreaMapper extends Mapper<SysArea> {
 	int updatebyparentids(@Param("areaid") Long areaid,
 	                      @Param("parentids") String parentids,
 	                      @Param("parentoldids") String parentoldids);
+
+	@InsertProvider(type = SysAreaSqlProvider.class,method = "insertSqlBatch")
+	int insertBatch(@Param("area") List<SysArea> area);
 }

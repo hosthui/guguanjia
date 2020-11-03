@@ -1,5 +1,7 @@
 package com.lyh.guguanjia.entity;
 
+import com.alibaba.excel.annotation.ExcelIgnore;
+import com.alibaba.excel.annotation.format.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Column;
@@ -20,6 +22,7 @@ public class SysArea {
      * 父级编号
      */
     @Column(name = "parent_id")
+//    @ExcelProperty("父级编号")//excel别名
     private Long parentId;
 
     /**
@@ -54,6 +57,8 @@ public class SysArea {
      */
     @Column(name = "create_date")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "CTT")
+    @DateTimeFormat("yyyy年MM月dd日")//设置Excel日期生成格式
+//    @NumberFormat("0.00")//设置Excel数字生成格式
     private Date createDate;
 
     /**
@@ -78,14 +83,17 @@ public class SysArea {
      * 删除标记(0活null 正常 1,删除)
      */
     @Column(name = "del_flag")
+    @ExcelIgnore//excel忽略生成字段
     private String delFlag;
 
     private String icon;
 
     @Transient
+    @ExcelIgnore
     private String parentName;
 
     @Transient
+    @ExcelIgnore
     private String parentOldIds;
 
 	public String getParentOldIds() {

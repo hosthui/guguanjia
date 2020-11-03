@@ -177,8 +177,7 @@
                                     </form>
                                 </div>
                                 <div class="widget-toolbar">
-			<span class="btn btn-purple btn-xs"
-                  >
+			<span class="btn btn-purple btn-xs" @click="download()">
 			<i class="ace-icon fa fa-cloud-upload bigger-130"></i>
 			导出Excel</span>
                                 </div>
@@ -187,7 +186,7 @@
 				<i class="ace-icon fa fa-cloud-download bigger-130"></i>
 				<span>导入数据</span>
 				<input type="file" class="phide" name="excel"
-                       />
+                       @change="upload"/>
 			</span>
                                 </div>
                                 <div class="widget-toolbar no-border">
