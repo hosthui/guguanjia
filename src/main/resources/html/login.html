@@ -82,7 +82,8 @@
 														<span class="block input-icon input-icon-right">
 															<input
                                                                     type="text" class="form-control width-55 pull-left" name="code" placeholder="验证码" v-model="code"/>
-															<img :src="render" @click="refresh();" id="code"
+															<img
+                                                                    :src="render" @click="refresh" id="code"
 															class="pull-right" title="点击换一张" style="cursor: pointer;border: 1px solid rgb(181, 181, 181);"/>
 														</span>
 													</label>
@@ -192,14 +193,14 @@
 					tipSweep : true
 				});*/
 				
-				// $("#login-form").keydown(function(e){
-				// 	 var e = e || event,
-				// 	 keycode = e.which || e.keyCode;
-				// 	 if (keycode==13) {
-				// 	  $("#login-btn").trigger("click");
-				// 	 }
-				// });
-				//
+				$("#login-form").keydown(function(e){
+					 var e = e || event,
+					 keycode = e.which || e.keyCode;
+					 if (keycode==13) {
+					  $("#login-btn").trigger("click");
+					 }
+				});
+
 			});
 		</script>
         <script type="text/javascript" src="static/vue/vue.js"></script>
@@ -215,17 +216,18 @@
             },
             methods:{
                 refresh:function () {
-                    
+                    window.location.href="kaptcha/render?"+new Date();
                 },
                 loginIn:function () {
                     axios({
                         url:"main/login",
                         method:"post",
                         data:{username:this.username,password:this.password,code:this.code}
-                    }).then({
-
-                    }).catch({
-
+                    }).then(response=>{
+                        let result=response.data
+                        if (result.success){
+                            location.href = 'index.html';
+                        }
                     })
                 }
             }
