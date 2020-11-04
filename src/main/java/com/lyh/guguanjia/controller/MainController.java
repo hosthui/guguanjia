@@ -21,7 +21,7 @@ public class MainController {
 	private Kaptcha kaptcha;
 
 	@Autowired
-	SysUserService sysUserService;
+	private SysUserService sysUserService;
 
 
 	@RequestMapping("sidebar")
@@ -40,20 +40,27 @@ public class MainController {
 	@RequestMapping("login")
 	@ResponseBody
 	public Result loginIn(String username, String password, String code,
-	                      HttpSession session){
-		String message=null;
-		if ( kaptcha.validate(code) ){
+	                      HttpSession session) {
+		String message = null;
+		if ( kaptcha.validate(code) ) {
 			SysUser loginUser = new SysUser();
 			loginUser.setUsername(username);
-			loginUser.setPassword(EncryptUtils.MD5_HEX(EncryptUtils.MD5_HEX(password)+username));
-			loginUser=sysUserService.selectOne(loginUser);
-			if ( loginUser!=null ){
-				//登录成功
-				loginUser.setPassword(null);
+			loginUser.setPassword(EncryptUtils.MD5_HEX(EncryptUtils.MD5_HEX(password) + username));
+			loginUser = sysUserService.selectOne(loginUser);
+			if (loginUser!=null){
 				session.setAttribute("loginuser",loginUser);
-				return new Result(true,"登录成功",null);
+				loginUser.setPassword(null);
+				return  new Result(true,"登录成功",loginUser);
+			}else {
+				message = "用户名或密码错误";
 			}
 		}
-		return new Result(false,"登录失败",null);
+		return new Result(false,message,null);
+	}
+	@RequestMapping("loginout")
+	@ResponseBody
+	public Result loginOut(HttpSession session){
+		session.invalidate();
+		return new Result(false,"注销成功",null);
 	}
 }

@@ -64,26 +64,23 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input
-                                                                    type="text" class="form-control" name="username" placeholder="用户名" v-model="username"/>
+															<input type="text" class="form-control" name="username" placeholder="用户名" v-model="username"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input
-                                                                    type="password" class="form-control" name="password" placeholder="密码" v-model="password"/>
+
+															<input type="password" class="form-control" name="password" placeholder="密码" v-model="password"/>
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
 													
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input
-                                                                    type="text" class="form-control width-55 pull-left" name="code" placeholder="验证码" v-model="code"/>
-															<img
-                                                                    :src="render" @click="refresh" id="code"
+															<input type="text" class="form-control width-55 pull-left" name="code" placeholder="验证码" v-model="code"/>
+															<img :src="render" @click="refresh" id="code"
 															class="pull-right" title="点击换一张" style="cursor: pointer;border: 1px solid rgb(181, 181, 181);"/>
 														</span>
 													</label>
@@ -192,46 +189,54 @@
 					},
 					tipSweep : true
 				});*/
-				
-				$("#login-form").keydown(function(e){
-					 var e = e || event,
-					 keycode = e.which || e.keyCode;
-					 if (keycode==13) {
-					  $("#login-btn").trigger("click");
-					 }
-				});
 
+			// 	$("#login-form").keydown(function(e){
+			// 		 var e = e || event,
+			// 		 keycode = e.which || e.keyCode;
+			// 		 if (keycode==13) {
+			// 		  $("#login-btn").trigger("click");
+			// 		 }
+			// 	});
+			//
 			});
 		</script>
-        <script type="text/javascript" src="static/vue/vue.js"></script>
-        <script type="text/javascript" src="static/vue/axios.js"></script>
-    <script type="text/javascript">
-        let vm=new Vue({
-            el:".main-container",
-            data:{
-                username:"",
-                password:"",
-                code:"",
-                render:"kaptcha/render"
-            },
-            methods:{
-                refresh:function () {
-                    window.location.href="kaptcha/render?"+new Date();
-                },
-                loginIn:function () {
-                    axios({
-                        url:"main/login",
-                        method:"post",
-                        data:{username:this.username,password:this.password,code:this.code}
-                    }).then(response=>{
-                        let result=response.data
-                        if (result.success){
-                            location.href = 'index.html';
-                        }
-                    })
-                }
-            }
-        })
-    </script>
+		<script type="text/javascript" src="static/vue/vue.js"></script>
+		<script type="text/javascript" src="static/vue/axios.js"></script>
+	<script type="text/javascript">
+		let vm=new Vue({
+			el:".main-container",
+			data:{
+				username:"",
+				password:"",
+				code:"",
+				render:"kaptcha/render"
+			},
+			methods:{
+				refresh:function () {
+					this.render="kaptcha/render?"+new Date()
+				},
+				loginIn:function () {
+					axios({
+						url:"main/login",
+						method:"get",
+						params:{username:this.username,password:this.password,code:this.code}
+					}).then(response=>{
+						let result=response.data
+						if (result.success){
+							let userjson = JSON.stringify(result.obj);
+							sessionStorage.setItem("loginsession",userjson);
+							window.location.href="index.html"
+						}else {
+							layer.msg(result.msg)
+							this.refresh()
+						}
+					}).catch(error=>{
+						layer.msg(error)
+						this.refresh()
+					})
+				}
+			}
+		})
+	</script>
 	</body>
 </html>

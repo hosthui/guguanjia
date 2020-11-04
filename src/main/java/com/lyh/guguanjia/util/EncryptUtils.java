@@ -1,14 +1,18 @@
 package com.lyh.guguanjia.util;
 
+
 import org.springframework.stereotype.Component;
+
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 
+
 @Component
 public  class EncryptUtils {
+
 
 	public static final char[] DIGITS = { '0', '1', '2', '3', '4', '5', '6',
 			'7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
