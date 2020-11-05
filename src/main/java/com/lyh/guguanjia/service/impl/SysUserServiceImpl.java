@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -23,4 +24,8 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser,Long> implements
 		return sysUserMapper.selectByRole(id);
 }
 
+	@Qualifier
+	public List<SysUser> selectbyunrole(Map<String,String> map){
+		return  sysUserMapper.selectByunRole(map);
+}
 }

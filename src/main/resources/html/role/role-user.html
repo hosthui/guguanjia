@@ -78,8 +78,9 @@
 												</label>
 											</div>
 										</div>
-										<div :class="dxBtn?'':'hide'" id="addUserBtn"><!--  @click="insertBatch" -->
-											<a href="javascript:void(0);" class="btn btn-block btn-primary">
+										<div :class="dxBtn?'':'hide'" id="addUserBtn"><!--   -->
+											<a href="javascript:void(0);"
+                                               class="btn btn-block btn-primary" @click="insertBatch">
 												<i class="ace-icon fa fa-plus bigger-110"></i>
 												<span>添加所选人员</span>
 											</a>
@@ -109,8 +110,8 @@
 												</div>
 											</div>
 										</form>
-										<div :class="yxBtn?'':'hide'" id="removeUserBtn"><!--  @click="deleteBatch"-->
-											<a href="javascript:void(0);" class="btn btn-block btn-success" >
+										<div :class="yxBtn?'':'hide'" id="removeUserBtn">
+											<a href="javascript:void(0);" class="btn btn-block btn-success" @click="delBatch">
 												<i class="ace-icon fa fa-trash bigger-110"></i>
 												<span>移除人员</span>
 											</a>

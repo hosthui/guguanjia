@@ -7,7 +7,9 @@ let vm = new Vue({
             yxIds:[],
             yxBtn:false,
             dxUsers:[],
+            dxIds:[],
             dxBtn:false,
+            nowcompany:"",
             setting: {
                 data: {
                     simpleData: {
@@ -62,7 +64,56 @@ let vm = new Vue({
                 this.yxBtn=false;
             }
         },
+        checkDxUsers: function (id) {
+            for (let i in this.dxUsers) {
+                if (id==this.dxUsers[i].id){
+                    this.dxUsers[i].checked=!this.dxUsers[i].checked
+                    if (this.dxUsers[i].checked){
+                        this.dxBtn=true;
+                        this.dxIds.push(id)
+                        return;
+                    }else{
+                        for (let j in this.dxIds){
+                            if (id==this.dxIds[j]){
+                                this.dxIds.splice(j,1)
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            if (this.dxIds.length==0){
+                this.dxBtn=false;
+            }
+        },
+        insertBatch:function(){
+            axios({
+                url:"manager/role/insertBatch",
+                params:{roleId:this.role.id,dxIds:this.dxIds+""}
+            }).then(response=>{
+                    layer.msg(response.data.msg)
+                    this.selectDxuser(this.nowcompany)
+                    this.selectYxuser()
+                    this.dxIds=[]
+                    this.dxBtn=false;
+            }).catch(error=>{
 
+            })
+        },
+        delBatch:function(){
+            axios({
+                url:"manager/role/delBatch",
+                params:{roleId:this.role.id,yxIds:this.yxIds+""}
+            }).then(response=>{
+                layer.msg(response.data.msg)
+                this.selectDxuser(this.nowcompany)
+                this.selectYxuser()
+                this.yxIds=[]
+                this.yxBtn=false;
+            }).catch(error=>{
+
+            })
+        },
         init: function () {
             axios({
                 url: "manager/examine/allOffice",
@@ -75,32 +126,34 @@ let vm = new Vue({
             })
         },
         onclick: function (event, treeId, treeNode) {
-            this.condition.name = treeNode.name;
-            this.condition.officeid = treeNode.id;
-            if (treeNode.id === 0) {
-                this.condition.officeid = null;
-            }
-            $(".btn-group").removeClass("open")
-        },
-        search: function () {
-            let zTreeObj = $.fn.zTree.getZTreeObj("pullDownTreeone");
-            let nodesFuzzy = zTreeObj.getNodesByParamFuzzy("name", this.condition.name, null);
+            let zTreeObj = $.fn.zTree.getZTreeObj("treeOffice");
             let transformToArray = zTreeObj.transformToArray(zTreeObj.getNodes());
+            this.nowcompany=treeNode.id
+            this.selectDxuser(treeNode.id)
             for (let i = 0; i < transformToArray.length; i++) {
                 transformToArray[i].isHigh = false;
                 zTreeObj.updateNode(transformToArray[i])
             }
-            for (let i = 0; i < nodesFuzzy.length; i++) {
-                nodesFuzzy[i].isHigh = true
-                zTreeObj.updateNode(nodesFuzzy[i])
-            }
+            treeNode.isHigh=true;
+            zTreeObj.updateNode(treeNode)
+        },
+        selectDxuser:function(id){
+            axios({
+                url: "manager/role/selectDxuser",
+                method: 'get',
+                params: map={officeId:id,roleId:this.role.id}
+            }).then(response => {
+                this.dxUsers = response.data.obj;
+                for (let i in this.dxUsers) {
+                    this.dxUsers[i].checked=false
+                }
+            }).catch(error => {
+
+            })
         },
         setfont: function (treeId, treeNode) {
             return treeNode.isHigh ? {"color": "red"} : {"color": "black"}
-        },
-        // changeUp: function () {
-        //     this.up = !this.up
-        // }
+        }
     },
     created:
         function () {

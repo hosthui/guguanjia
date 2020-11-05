@@ -29,4 +29,12 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRole,Long> implements
 		return new PageInfo<>(selectpage);
 	}
 
+	@Qualifier
+	public int insertBatch(Long roleId,Long[] dxIds){
+		return sysRoleMapper.insertBatch(roleId,dxIds);
+	}
+	@Qualifier
+	public int delBatch(Long roleId,Long[] yxIds){
+		return sysRoleMapper.delBatch(roleId,yxIds);
+	}
 }

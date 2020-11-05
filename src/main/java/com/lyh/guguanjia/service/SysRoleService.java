@@ -8,4 +8,6 @@ import java.util.Map;
 public interface SysRoleService extends BaseService<SysRole,Long>{
 	PageInfo<SysRole> selectPage(int pageNum, int pageSize,
 	                             Map<String,String> sysRoleCondition);
+	int insertBatch(Long roleId,Long[] dxIds);
+	int delBatch(Long roleId,Long[] yxIds);
 }
