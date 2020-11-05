@@ -2,6 +2,7 @@ package com.lyh.guguanjia.controller;
 
 
 import com.lyh.guguanjia.entity.Result;
+import com.lyh.guguanjia.service.SysResourceService;
 import com.lyh.guguanjia.service.SysRoleService;
 import com.lyh.guguanjia.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ public class SysRoleController {
 	@Autowired
 	SysUserService sysUserService;
 
+	@Autowired
+	SysResourceService sysResourceService;
+
+
 	@RequestMapping("selectAll/{pageNum}/{pageSize}")
 	public Result selectall(@PathVariable int pageNum,
 	                        @PathVariable int pageSize,
@@ -32,7 +37,10 @@ public class SysRoleController {
 	public ModelAndView toallocation(){
 		return new ModelAndView("/role/role-user.html");
 	}
-
+	@RequestMapping("toUpdate")
+	public ModelAndView toupdate(){
+		return new ModelAndView("/role/role-save.html");
+	}
 	@RequestMapping("selectYxuser")
 	public Result selectyxuser(@RequestParam int id){
 		return new Result(sysUserService.selectbyrole(id));
@@ -48,5 +56,10 @@ public class SysRoleController {
 	@RequestMapping("delBatch")
 	public Result delbatch( Long roleId, Long[] yxIds){
 		return new Result(true,"删除成功",sysRoleService.delBatch(roleId,yxIds));
+	}
+
+	@RequestMapping("allRole")
+	public Result allrole(){
+		return new Result(sysResourceService.selectAll());
 	}
 }

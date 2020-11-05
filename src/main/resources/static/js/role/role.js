@@ -64,6 +64,20 @@ let vm = new Vue({
                 }
             })
         },
+        toUpdate: function (data) {
+            layer.obj = data;
+            layer.open({
+                type: 2,
+                title: false,
+                shadeClose: true,
+                shade: 0.1,
+                area: ['80%', '80%'],
+                content: 'manager/role/toUpdate',
+                end: () => {
+                    this.selectAll(this.pageInfo.pageNum, this.pageInfo.pageSize)
+                }
+            })
+        },
         toDel: function (app) {
             app.delFlag = 1
             layer.msg('确认删除', {
