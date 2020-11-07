@@ -29,5 +29,9 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource,Long> im
 		return sysResourceMapper.officeSelectnbyrid(rid);
 	}
 
+	@Qualifier
+	public List<SysResource> ResourcesbyUserid(Long uid) {
+		return sysResourceMapper.resourcesbyUserid(uid);
+	}
 
 }

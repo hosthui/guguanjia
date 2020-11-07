@@ -221,9 +221,10 @@
 						method:"get",
 						params:{username:this.username,password:this.password,code:this.code}
 					}).then(response=>{
-						let result=response.data
-						if (result.success){
-							let userjson = JSON.stringify(result.obj);
+					    debugger;
+						let result=response.data.obj.loginuser
+						if (response.data.success){
+							let userjson = JSON.stringify(result);
 							sessionStorage.setItem("loginsession",userjson);
 							window.location.href="index.html"
 						}else {
