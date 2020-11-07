@@ -17,12 +17,21 @@ let vm = new Vue({
                 view: {
                     fontCss: this.setfont
                 },
-                check:{
-                    enable:true
+                check: {
+                    enable: true
                 }
             },
             nodes: [],
-            officeNodes:[]
+            treeObj: "",
+            officeNodes: [],
+            officeTreeObj: '',
+            params: {
+                role: "",
+                _resources: [],
+                resources: [],
+                _offices: [],
+                offices: []
+            }
         }
     },
     methods: {
@@ -34,7 +43,8 @@ let vm = new Vue({
                 }).then(response=>{
                     this.officeNodes=response.data.obj
                     this.officeNodes[this.officeNodes.length]={"id":0,"name":"机构列表"}
-                    $.fn.zTree.init($("#select-treetreeSelectOfficeEdit"),this.setting,this.officeNodes)
+                    this.officeTreeObj=$.fn.zTree.init($("#select-treetreeSelectOfficeEdit"),this.setting,this.officeNodes)
+                    this.officeSelectByRid();
                 }).catch(error=>{
 
                 })
@@ -44,9 +54,40 @@ let vm = new Vue({
         },
         selectByRid:function(){
             axios({
-                url: "manager/role/allRole",
+                url: "manager/role/selectByRid",
                 method: 'get',
+                params:{rid:this.role.id},
             }).then(response => {
+                let transformToArray = this.treeObj.transformToArray(this.treeObj.getNodes());
+                let _nodes = response.data.obj;
+                this.params._resources=_nodes
+                for (let nodesKey in _nodes) {
+                    for (let transformToArrayKey in transformToArray) {
+                        if (_nodes[nodesKey]==transformToArray[transformToArrayKey].id){
+                            transformToArray[transformToArrayKey].checked=true
+                        }
+                    }
+                }
+            }).catch(error => {
+
+            })
+        },
+        officeSelectByRid:function(){
+            axios({
+                url: "manager/role/officeSelectByRid",
+                method: 'get',
+                params:{rid:this.role.id},
+            }).then(response => {
+                let transformToArray = this.officeTreeObj.transformToArray(this.officeTreeObj.getNodes());
+                let _nodes = response.data.obj;
+                this.params._offices=_nodes
+                for (let nodesKey in _nodes) {
+                    for (let transformToArrayKey in transformToArray) {
+                        if (_nodes[nodesKey]==transformToArray[transformToArrayKey].id){
+                            transformToArray[transformToArrayKey].checked=true
+                        }
+                    }
+                }
             }).catch(error => {
 
             })
@@ -58,9 +99,9 @@ let vm = new Vue({
             }).then(response => {
                 this.nodes = response.data.obj
                 this.nodes[this.nodes.length] = {"id": 0, "name": "权限列表"}
-                $.fn.zTree.init($("#select-treetreeSelectResEdit"), this.setting, this.nodes)
+                this.treeObj=$.fn.zTree.init($("#select-treetreeSelectResEdit"), this.setting, this.nodes)
                 this.selectByRid()
-
+                this.changeDataScope()
             }).catch(error => {
 
             })
@@ -73,24 +114,34 @@ let vm = new Vue({
             }
             $(".btn-group").removeClass("open")
         },
-        search: function () {
-            let zTreeObj = $.fn.zTree.getZTreeObj("pullDownTreeone");
-            let nodesFuzzy = zTreeObj.getNodesByParamFuzzy("name", this.condition.name, null);
-            let transformToArray = zTreeObj.transformToArray(zTreeObj.getNodes());
-            for (let i = 0; i < transformToArray.length; i++) {
-                transformToArray[i].isHigh = false;
-                zTreeObj.updateNode(transformToArray[i])
+        update:function () {
+            let checkedNodes = this.treeObj.getCheckedNodes(true);
+            if (checkedNodes.length>0&&checkedNodes[0].id==0){
+                checkedNodes.splice(0,1);
             }
-            for (let i = 0; i < nodesFuzzy.length; i++) {
-                nodesFuzzy[i].isHigh = true
-                zTreeObj.updateNode(nodesFuzzy[i])
+            for (let i = 0; i < checkedNodes.length; i++) {
+                this.params.resources.push(checkedNodes[i].id);
             }
-        },
-        setfont: function (treeId, treeNode) {
-            return treeNode.isHigh ? {"color": "red"} : {"color": "black"}
-        },
-        changeUp: function () {
-            this.up = !this.up
+            if (this.role.dataScope=="9") {
+                let checkedNodesoffice = this.officeTreeObj.getCheckedNodes(true);
+                if (checkedNodesoffice.length>0&&checkedNodesoffice[0].id==0){
+                    checkedNodesoffice.splice(0,1);
+                }
+
+                for (let i = 0; i < checkedNodesoffice.length; i++) {
+                    this.params.offices.push(checkedNodesoffice[i].id);
+                }
+            }
+            this.params.role=this.role
+            axios({
+                url:"manager/role/update",
+                method:"put",
+                data:this.params
+            }).then(response=>{
+                let frameIndex = parent.layer.getFrameIndex(window.name);
+                parent.layer.msg("更新成功");
+                parent.layer.close(frameIndex)
+            })
         }
     },
     created:

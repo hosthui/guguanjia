@@ -10,4 +10,5 @@ public interface SysRoleService extends BaseService<SysRole,Long>{
 	                             Map<String,String> sysRoleCondition);
 	int insertBatch(Long roleId,Long[] dxIds);
 	int delBatch(Long roleId,Long[] yxIds);
+	int doUpdate(Map<String,Object> params);
 }

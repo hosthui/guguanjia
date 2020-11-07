@@ -261,4 +261,5 @@ public class SysRole {
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag == null ? null : delFlag.trim();
     }
+
 }

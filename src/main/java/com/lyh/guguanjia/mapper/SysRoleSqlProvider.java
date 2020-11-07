@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
 import java.util.Map;
 
 public class SysRoleSqlProvider {
@@ -54,7 +55,7 @@ public class SysRoleSqlProvider {
 	 * DELETE FROM sys_user_role WHERE role_id=1 and user_id in (65,61)
 	 */
 	public String delSql(@Param("roleId") Long roleId,@Param("yxIds") Long[] yxIds){
-		StringBuffer buffer = new StringBuffer(" DELETE FROM sys_user_role WHERE role_id=1 and user_id in (");
+		StringBuffer buffer = new StringBuffer(" DELETE FROM sys_user_role WHERE role_id=#{roleId} and user_id in (");
 		for ( int i = 0; i < yxIds.length; i++ ) {
 			buffer.append("#{yxIds["+i+"]},");
 		}
@@ -62,5 +63,45 @@ public class SysRoleSqlProvider {
 		buffer.append(")");
 		return buffer.toString();
 
+	}
+
+
+	public String insertSqlbyoffice(@Param("roleId") Long roleId,
+	                         @Param("oid")  List<Integer> oid){
+		/**
+		 * INSERT INTO sys_role_office(role_id, office_id, create_date,update_date
+		 * del_flag) VALUES ( 2, 45, now(),now(),'0');
+		 */
+		return new SQL(){{
+			INSERT_INTO("sys_role_office");
+			INTO_COLUMNS("role_id, office_id,create_date,update_date,del_flag");
+			StringBuffer buffer = new StringBuffer();
+			for ( int i = 0; i < oid.size(); i++ ) {
+				buffer.append("#{roleId},#{oid["+i+"]},now(),now(),'0'");
+				INTO_VALUES(buffer.toString());
+				ADD_ROW();
+				buffer.delete(0,buffer.length());
+			}
+		}}.toString();
+	}
+
+	public String insertBatchByResource(@Param("roleId") Long roleId,
+	                                @Param("rid") List<Integer> rid){
+		/**
+		 * INSERT INTO sys_role_resource(role_id, resource_id, create_date,
+		 * update_date
+		 * del_flag) VALUES ( 2, 45, now(),now(),'0');
+		 */
+		return new SQL(){{
+			INSERT_INTO("sys_role_resource");
+			INTO_COLUMNS("role_id, resource_id, create_date,update_date,del_flag");
+			StringBuffer buffer = new StringBuffer();
+			for ( int i = 0; i < rid.size(); i++ ) {
+				buffer.append("#{roleId},#{rid["+i+"]},now(),now(),'0'");
+				INTO_VALUES(buffer.toString());
+				ADD_ROW();
+				buffer.delete(0,buffer.length());
+			}
+		}}.toString();
 	}
 }

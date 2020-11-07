@@ -62,4 +62,18 @@ public class SysRoleController {
 	public Result allrole(){
 		return new Result(sysResourceService.selectAll());
 	}
+	@RequestMapping("selectByRid")
+	public Result selectnbyrid(int rid){
+		return  new Result(sysResourceService.selectnbyrid(rid));
+	}
+	@RequestMapping("officeSelectByRid")
+	public Result officeSelectByRid(int rid){
+		return  new Result(sysResourceService.officeSelectnbyrid(rid));
+	}
+
+	@RequestMapping(value = "update",method = RequestMethod.PUT)
+	public Result Update(@RequestBody Map<String,Object> params){
+		return  new Result(sysRoleService.doUpdate(params));
+	}
+
 }
