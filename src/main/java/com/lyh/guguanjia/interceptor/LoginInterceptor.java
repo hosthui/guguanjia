@@ -1,6 +1,5 @@
 package com.lyh.guguanjia.interceptor;
 
-import com.lyh.guguanjia.entity.SysUser;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +12,8 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
 	    Map<String,Object> usermsg = (Map<String, Object>)session.getAttribute("usermsg");
-	   SysUser loginuser= (SysUser)usermsg.get("loginuser");
-	    if (loginuser==null) {
+//	   SysUser loginuser= (SysUser)usermsg.get("loginuser");
+	    if (usermsg==null) {
             response.sendRedirect(request.getContextPath()+"/notlogin.html");
             return false;
         }

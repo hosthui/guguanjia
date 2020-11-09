@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("manager/examine")
@@ -21,7 +22,10 @@ public class ExamineController {
 	@Autowired
 	SysOfficeService service;
 
-
+	@RequestMapping("index")
+	public ModelAndView toindex(){
+		return new ModelAndView("/examine/index.html");
+	}
 
 	@RequestMapping("selectAll/{pageNum}/{pageSize}")
 	public Result selectall(@PathVariable int pageNum,

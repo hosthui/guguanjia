@@ -8,4 +8,5 @@ public interface SysResourceService extends BaseService<SysResource,Long> {
 	List<Integer> selectnbyrid(int rid);
 	List<Integer> officeSelectnbyrid(int rid);
 	List<SysResource> ResourcesbyUserid(Long uid);
+	List<SysResource> allresorce();
 }

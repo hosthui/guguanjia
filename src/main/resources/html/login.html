@@ -206,8 +206,8 @@
 		let vm=new Vue({
 			el:".main-container",
 			data:{
-				username:"",
-				password:"",
+				username:"admin",
+				password:"admin",
 				code:"",
 				render:"kaptcha/render"
 			},
@@ -221,14 +221,16 @@
 						method:"get",
 						params:{username:this.username,password:this.password,code:this.code}
 					}).then(response=>{
-					    debugger;
 						let result=response.data.obj.loginuser
+                        let userResources = response.data.obj.userResources;
 						if (response.data.success){
 							let userjson = JSON.stringify(result);
+							let resourcesjson=JSON.stringify(userResources)
 							sessionStorage.setItem("loginsession",userjson);
-							window.location.href="index.html"
+							sessionStorage.setItem("resourcessession",resourcesjson);
+							window.location.href="main/loginin"
 						}else {
-							layer.msg(result.msg)
+							layer.msg(response.data.msg)
 							this.refresh()
 						}
 					}).catch(error=>{

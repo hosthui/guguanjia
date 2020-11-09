@@ -20,6 +20,12 @@ public class DemandController {
 	@Autowired
 	DemandService service;
 
+	@RequestMapping("index")
+	public ModelAndView toindex(){
+		return new ModelAndView("/demand/index.html");
+	}
+
+
 	@RequestMapping("selectAll")
 	public PageInfo<Demand> selectall(@RequestParam Integer pageNum,
 	                                  @RequestParam Integer pageSize){

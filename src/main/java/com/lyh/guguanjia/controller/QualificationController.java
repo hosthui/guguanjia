@@ -22,6 +22,13 @@ public class QualificationController {
 	SysUserMapper userMapper;
 	@Value("${staticpath}")
 	String syspath;
+
+
+	@RequestMapping("index")
+	public ModelAndView toindex(){
+		return new ModelAndView("/qualification/index.html");
+	}
+
 	@RequestMapping("selectAll/{pageNum}/{pageSize}")
 	public Result selectAll(@PathVariable int pageNum,@PathVariable int pageSize, QualificationCondition condition){
 		return new Result(service.selectPage(pageNum,pageSize, condition));

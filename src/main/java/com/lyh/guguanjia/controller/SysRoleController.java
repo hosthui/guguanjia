@@ -24,6 +24,10 @@ public class SysRoleController {
 	@Autowired
 	SysResourceService sysResourceService;
 
+	@RequestMapping("")
+	public ModelAndView toindex(){
+		return new ModelAndView("/role/role.html");
+	}
 
 	@RequestMapping("selectAll/{pageNum}/{pageSize}")
 	public Result selectall(@PathVariable int pageNum,

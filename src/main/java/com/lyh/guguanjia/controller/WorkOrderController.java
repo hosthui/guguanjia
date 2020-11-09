@@ -26,6 +26,12 @@ public class WorkOrderController {
 	@Autowired
 	SysOfficeService sysOfficeService;
 
+
+	@RequestMapping("index")
+	public ModelAndView toindex(){
+		return new ModelAndView("/work/admin/index.html");
+	}
+
 	@RequestMapping("selectAll/{pageNum}/{pageSize}")
 	public Result selectall(@PathVariable int pageNum,
 	                        @PathVariable int pageSize,

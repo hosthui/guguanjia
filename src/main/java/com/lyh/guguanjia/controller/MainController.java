@@ -75,4 +75,8 @@ public class MainController {
 		session.invalidate();
 		return new Result(false,"注销成功",null);
 	}
+	@RequestMapping("loginin")
+	public String loginIn(){
+		return "/index.html";
+	}
 }

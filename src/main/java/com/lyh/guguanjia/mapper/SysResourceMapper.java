@@ -20,11 +20,14 @@ public interface SysResourceMapper extends Mapper<SysResource> {
 	@Select("SELECT sr.* FROM sys_user_role sur,sys_role_resource srr,sys_resource sr " + 
 			"WHERE sur.user_id=#{uid}  " +
 			"and sr.del_flag='0' " + 
-			"and sr.type='0' " + 
-			"and sr.common='0' " + 
+			"and sr.type='0' " +
+
 			"and srr.role_id=sur.role_id " + 
 			"and srr.resource_id=sr.id " + 
 			"ORDER BY sr.sort")
 	List<SysResource> resourcesbyUserid(Long uid);
+
+	@Select("select * from sys_resource  WHERE del_flag='0' and type='0' and common='0' and url <> ''")
+	List<SysResource> allresource();
 
 }

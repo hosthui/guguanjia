@@ -6,6 +6,7 @@ import com.lyh.guguanjia.mapper.SysResourceMapper;
 import com.lyh.guguanjia.service.SysResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +33,13 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource,Long> im
 	@Qualifier
 	public List<SysResource> ResourcesbyUserid(Long uid) {
 		return sysResourceMapper.resourcesbyUserid(uid);
+	}
+
+
+	@Qualifier
+	@Cacheable(cacheNames="ResourceCach" , key="'com.lyh.guguanjia.service.impl.SysResourceServiceImpl:resources'")
+	public List<SysResource> allresorce(){
+		return sysResourceMapper.allresource();
 	}
 
 }

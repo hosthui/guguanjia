@@ -19,6 +19,11 @@ public class AppVersionController {
 	@Autowired
 	AppVersionService service;
 
+	@RequestMapping("index")
+	public ModelAndView toindex(){
+		return new ModelAndView("/app/index.html");
+	}
+
 	@RequestMapping("selectAll/{pageNum}/{pageSize}")
 	public PageInfo<AppVersion> selectAll(@PathVariable int pageNum,
 	                          @PathVariable int pageSize){

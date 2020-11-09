@@ -22,6 +22,12 @@ public class AreaController {
 	@Autowired
 	SysAreaService sysAreaService;
 
+
+	@RequestMapping("")
+	public ModelAndView toindex(){
+		return new ModelAndView("/area/area.html");
+	}
+
 	@RequestMapping("areaPage/{pageNum}/{pageSize}")
 	public Result areapage(@PathVariable int pageNum,
 	                       @PathVariable int pageSize, @RequestParam Map<String,String> params){

@@ -33,6 +33,12 @@ public class StatueController {
 	@Value("${staticpath}")
 	String staticPath;
 
+	@RequestMapping("index")
+	public ModelAndView toindex(){
+		return new ModelAndView("/statute/index.html");
+	}
+
+
 	@RequestMapping("toupdate")
 	public ModelAndView toupdate(){
 		return new ModelAndView("/statute/update.html");
