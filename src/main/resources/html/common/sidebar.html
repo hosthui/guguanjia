@@ -29,12 +29,13 @@
 </div><!-- /.sidebar-shortcuts -->
 <div id="nav-div">
 <ul class="nav nav-list" id="sidebar-menu" >
-    <li data-level="1" v-for="r in nodes">
+    <li data-level="1" v-for="r in nodes" @click="changeArrow(r)">
         <a href="javascript:void(0);" class="dropdown-toggle"
            :haschild="r.check_Child_State==0?'true':'false'">
             <i class="menu-icon" :class="r.icon"></i>
             <span class="menu-text" style="vertical-align: middle;"> {{r.name}}</span>
-            <b class="arrow fa fa-angle-down"></b>
+            <b class="arrow fa"
+               :class="r.arrow?'fa-angle-up':'fa-angle-down'"></b>
         </a>
         <b class="arrow"></b>
         <ul class="submenu nav-hide" style="display: none">
@@ -73,8 +74,16 @@
                     }
                 }
                 let init = $.fn.zTree.init($("#tree"), setting, this.nodes);
-                this.nodes=init.getNodes()
+                
+                let nodes = init.getNodes();
                 $.fn.zTree.destroy("tree");
+                for (let nodesKey in nodes) {
+                    nodes[nodesKey].arrow=false;
+                }
+                this.nodes=nodes;
+            },
+            changeArrow:function (r) {
+                r.arrow=!r.arrow
             }
         },
         created:function () {

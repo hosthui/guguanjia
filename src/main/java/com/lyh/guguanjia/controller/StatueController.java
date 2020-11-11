@@ -33,6 +33,24 @@ public class StatueController {
 	@Value("${staticpath}")
 	String staticPath;
 
+	@Value("${uploadpath}")
+	String uploadPath;
+
+	@Value("${ftphost}")
+	String ftpHost;
+
+	@Value("${ftpport}")
+	int ftpPort;
+
+	@Value("${ftpusername}")
+	String ftpUserName;
+
+	@Value("${ftppassword}")
+	String ftpPassword;
+
+	@Value("${ftppath}")
+	String ftpPath;
+
 	@RequestMapping("index")
 	public ModelAndView toindex(){
 		return new ModelAndView("/statute/index.html");
@@ -75,12 +93,13 @@ public class StatueController {
 
 			String originalFilename = upfile.getOriginalFilename();
 			String type = originalFilename.substring(originalFilename.lastIndexOf("."));
-			File file = new File("D:\\tst\\a\\" + originalFilename);
+			File file = new File(uploadPath + originalFilename);
 
 			try {
 				upfile.transferTo(file);
-			FTPClient ftp = ftpUtil.getFTPClient("192.168.1.125", 21, "user","user");
-			ftpUtil.uploadFile(ftp, file.getAbsolutePath(), "/uploads");
+			FTPClient ftp = ftpUtil.getFTPClient(ftpHost, ftpPort,
+					ftpUserName,ftpPassword);
+			ftpUtil.uploadFile(ftp, file.getAbsolutePath(), ftpPath);
 			ftpUtil.closeFTP(ftp);
 			exec = new JSONObject(resultMap("SUCCESS",originalFilename,upfile.getSize(),originalFilename,type,staticPath+originalFilename)).toString();
 			} catch (IOException e) {
