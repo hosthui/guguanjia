@@ -4,11 +4,10 @@ package com.lyh.guguanjia.config;
 import com.lyh.guguanjia.interceptor.LoginInterceptor;
 import com.lyh.guguanjia.interceptor.ResourceInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
+//@Configuration
 public class springmvcConfig implements WebMvcConfigurer {
 
 	@Autowired
