@@ -1,8 +1,11 @@
 package com.lyh.guguanjia.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
 
 @Table(name = "sys_office")
@@ -97,6 +100,7 @@ public class SysOffice {
      * 创建时间
      */
     @Column(name = "create_date")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "CTT")
     private Date createDate;
 
     /**
@@ -109,6 +113,7 @@ public class SysOffice {
      * 更新时间
      */
     @Column(name = "update_date")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "CTT")
     private Date updateDate;
 
     /**
@@ -134,7 +139,19 @@ public class SysOffice {
      */
     private String remarks;
 
-    /**
+
+    @Transient
+    private String areaName;
+
+	public String getAreaName() {
+		return areaName;
+	}
+
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
+	}
+
+	/**
      * 获取编号
      *
      * @return id - 编号

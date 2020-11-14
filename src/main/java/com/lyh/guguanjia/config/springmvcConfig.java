@@ -1,7 +1,6 @@
 package com.lyh.guguanjia.config;
 
 
-import com.lyh.guguanjia.interceptor.LoginInterceptor;
 import com.lyh.guguanjia.interceptor.ResourceInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -15,8 +14,8 @@ public class springmvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        LoginInterceptor loginInterceptor = new LoginInterceptor();
-        registry.addInterceptor(loginInterceptor).addPathPatterns(new String[]{"/manager/**","/**/*.html"}).excludePathPatterns(new String[]{"/login.html","/notauth.html","/notlogin.html"});
-	    registry.addInterceptor(resourceInterceptor).addPathPatterns(new String[]{"/manager/**","/**/*.html"}).excludePathPatterns(new String[]{"/login.html","/notauth.html","/notlogin.html"});
+//        LoginInterceptor loginInterceptor = new LoginInterceptor();
+//        registry.addInterceptor(loginInterceptor).addPathPatterns(new String[]{"/manager/**","/**/*.html"}).excludePathPatterns(new String[]{"/login.html","/notauth.html","/notlogin.html"});
+//	    registry.addInterceptor(resourceInterceptor).addPathPatterns(new String[]{"/manager/**","/**/*.html"}).excludePathPatterns(new String[]{"/login.html","/notauth.html","/notlogin.html"});
     }
 }

@@ -52,7 +52,6 @@
     <!--[if lte IE 8]>
     <script src="static/bootstrap/html5shiv.min.js"></script>
     <script src="static/bootstrap/respond.min.js"></script>
-    <script>var ie8 = "ie8";</script>
     <![endif]-->
 </head>
 
@@ -69,12 +68,12 @@
 </div>
 <!-- 主体 -->
 <div class="main-container" id="main-container">
-    <script type="text/javascript">
-        try {
-            ace.settings.check('main-container', 'fixed')
-        } catch (e) {
-        }
-    </script>
+    <!--<script type="text/javascript">-->
+        <!--try {-->
+            <!--ace.settings.check('main-container', 'fixed')-->
+        <!--} catch (e) {-->
+        <!--}-->
+    <!--</script>-->
 
 
     <div id="sidebar" class="sidebar responsive">
@@ -83,12 +82,12 @@
 
     <div class="main-content">
         <div class="breadcrumbs" id="breadcrumbs">
-            <script type="text/javascript">
-                try {
-                    ace.settings.check('breadcrumbs', 'fixed')
-                } catch (e) {
-                }
-            </script>
+            <!--<script type="text/javascript">-->
+                <!--try {-->
+                    <!--ace.settings.check('breadcrumbs', 'fixed')-->
+                <!--} catch (e) {-->
+                <!--}-->
+            <!--</script>-->
 
             <ul class="tab" id="breadcrumb">
                 <!-- <li class="active" >
@@ -201,15 +200,18 @@
                                         <div class="input-group" style="line-height: 0px;">
 					<span class="input-group-btn">
 						<span class=" btn  btn-success btn-sm"
-                              id="search-all-btn">
+                              id="search-all-btn" @click="clearCon()">
 							 显示全部
 						</span>
 					</span>
                                             <input type="text" class="form-control search-query"
-                                                   name="name" placeholder="机构名称" id="search-input">
+                                                   name="name"
+                                                   placeholder="机构名称"
+                                                   id="search-input"
+                                                   v-model="params.conName">
                                             <span class="input-group-btn">
 						<span class="btn  btn-success btn-sm"
-                              id="search-btn">
+                              id="search-btn" @click="selectAll()">
 							搜索 <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
 						</span>
 					</span>
@@ -233,7 +235,6 @@
                                                 <thead>
                                                 <tr>
                                                     <th class="center">名称</th>
-                                                    <th class="center" style="display: none;">上级机构</th>
                                                     <th class="center" width="80px">区域</th>
                                                     <th class="center">负责人</th>
                                                     <th class="center">电话</th>
@@ -242,421 +243,28 @@
                                                 </thead>
 
                                                 <tbody>
-                                                <tr>
+                                                <tr v-for="comp in pageInfo.list">
                                                     <td class="center">
-                                                        <a href="detail.html"
-                                                           data-title="<固管家服务平台>详情" data-mode="detail"
-                                                           data-url="office/detail/showlayer"
-                                                           data-data="{id:'56'}"
-                                                           data-width="50%"
-                                                        >(<b>公司</b>)固管家服务平台</a>
-                                                    </td>
-                                                    <td class="center" style="display: none;">
-
+                                                        <a
+                                                                href="detail.html">(<b>公司</b>){{comp.name}}</a>
                                                     </td>
                                                     <td class="center">
-                                                        中国
+                                                        {{comp.areaName}}
                                                     </td>
                                                     <td class="center">
-                                                        管理员
+                                                        {{comp.master}}
                                                     </td>
                                                     <td class="center">
-
+                                                        {{comp.phone}}
                                                     </td>
                                                     <td class="center">
                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="green" href="save.html"
-                                                               data-mode="page" data-title="<固管家服务平台>编辑"
-                                                               data-url="office/edit/showlayer"
-                                                               data-data="{id:'56',parentId:''}"
-                                                               data-width="50%"
-                                                            >
+                                                            <a class="green"
+                                                               style="cursor:pointer" @click="toUpdate(comp)">
                                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                             </a>
 
-                                                            <a class="red" href="javascript:void(0);"
-                                                               data-mode="del" data-title="删除操作"
-                                                               data-msg="你确定删除<固管家服务平台>节点及其所有的子节点吗?(慎重操作)"
-                                                               data-url="office/delete" data-data="{id:'56'}"
-                                                            >
-                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="center">
-                                                        <a href="detail.html"
-                                                           data-title="<重庆天志环保有限公司（长寿处置场）>详情" data-mode="detail"
-                                                           data-url="office/detail/showlayer"
-                                                           data-data="{id:'5'}"
-                                                           data-width="50%"
-                                                        >(<b>公司</b>)重庆天志环保有限公司（长寿处置场）</a>
-                                                    </td>
-                                                    <td class="center" style="display: none;">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        重庆市
-                                                    </td>
-                                                    <td class="center">
-                                                        刘泉
-                                                    </td>
-                                                    <td class="center">
-                                                        13220361580
-                                                    </td>
-                                                    <td class="center">
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="green" href="save.html"
-                                                               data-mode="page" data-title="<重庆天志环保有限公司（长寿处置场）>编辑"
-                                                               data-url="office/edit/showlayer"
-                                                               data-data="{id:'5',parentId:''}"
-                                                               data-width="50%"
-                                                            >
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="javascript:void(0);"
-                                                               data-mode="del" data-title="删除操作"
-                                                               data-msg="你确定删除<重庆天志环保有限公司（长寿处置场）>节点及其所有的子节点吗?(慎重操作)"
-                                                               data-url="office/delete" data-data="{id:'5'}"
-                                                            >
-                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="center">
-                                                        <a href="detail.html"
-                                                           data-title="<固管家产废方测试机构>详情" data-mode="detail"
-                                                           data-url="office/detail/showlayer"
-                                                           data-data="{id:'53'}"
-                                                           data-width="50%"
-                                                        >(<b>公司</b>)固管家产废方测试机构</a>
-                                                    </td>
-                                                    <td class="center" style="display: none;">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        重庆市
-                                                    </td>
-                                                    <td class="center">
-                                                        产废方测试负责人
-                                                    </td>
-                                                    <td class="center">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="green" href="save.html"
-                                                               data-mode="page" data-title="<固管家产废方测试机构>编辑"
-                                                               data-url="office/edit/showlayer"
-                                                               data-data="{id:'53',parentId:''}"
-                                                               data-width="50%"
-                                                            >
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="javascript:void(0);"
-                                                               data-mode="del" data-title="删除操作"
-                                                               data-msg="你确定删除<固管家产废方测试机构>节点及其所有的子节点吗?(慎重操作)"
-                                                               data-url="office/delete" data-data="{id:'53'}"
-                                                            >
-                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="center">
-                                                        <a href="detail.html"
-                                                           data-title="<新注册用户默认机构>详情" data-mode="detail"
-                                                           data-url="office/detail/showlayer"
-                                                           data-data="{id:'2'}"
-                                                           data-width="50%"
-                                                        >(<b>公司</b>)新注册用户默认机构</a>
-                                                    </td>
-                                                    <td class="center" style="display: none;">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        中国
-                                                    </td>
-                                                    <td class="center">
-
-                                                    </td>
-                                                    <td class="center">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="green" href="save.html"
-                                                               data-mode="page" data-title="<新注册用户默认机构>编辑"
-                                                               data-url="office/edit/showlayer"
-                                                               data-data="{id:'2',parentId:''}"
-                                                               data-width="50%"
-                                                            >
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="javascript:void(0);"
-                                                               data-mode="del" data-title="删除操作"
-                                                               data-msg="你确定删除<新注册用户默认机构>节点及其所有的子节点吗?(慎重操作)"
-                                                               data-url="office/delete" data-data="{id:'2'}"
-                                                            >
-                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="center">
-                                                        <a href="detail.html"
-                                                           data-title="<固管家运输方测试机构>详情" data-mode="detail"
-                                                           data-url="office/detail/showlayer"
-                                                           data-data="{id:'52'}"
-                                                           data-width="50%"
-                                                        >(<b>公司</b>)固管家运输方测试机构</a>
-                                                    </td>
-                                                    <td class="center" style="display: none;">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        重庆市
-                                                    </td>
-                                                    <td class="center">
-                                                        运输方测试负责人
-                                                    </td>
-                                                    <td class="center">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="green" href="save.html"
-                                                               data-mode="page" data-title="<固管家运输方测试机构>编辑"
-                                                               data-url="office/edit/showlayer"
-                                                               data-data="{id:'52',parentId:''}"
-                                                               data-width="50%"
-                                                            >
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="javascript:void(0);"
-                                                               data-mode="del" data-title="删除操作"
-                                                               data-msg="你确定删除<固管家运输方测试机构>节点及其所有的子节点吗?(慎重操作)"
-                                                               data-url="office/delete" data-data="{id:'52'}"
-                                                            >
-                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="center">
-                                                        <a href="detail.html"
-                                                           data-title="<固管家处置方测试机构>详情" data-mode="detail"
-                                                           data-url="office/detail/showlayer"
-                                                           data-data="{id:'54'}"
-                                                           data-width="50%"
-                                                        >(<b>公司</b>)固管家处置方测试机构</a>
-                                                    </td>
-                                                    <td class="center" style="display: none;">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        重庆市
-                                                    </td>
-                                                    <td class="center">
-                                                        固管家运输方测试机构负责人
-                                                    </td>
-                                                    <td class="center">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="green" href="save.html"
-                                                               data-mode="page" data-title="<固管家处置方测试机构>编辑"
-                                                               data-url="office/edit/showlayer"
-                                                               data-data="{id:'54',parentId:''}"
-                                                               data-width="50%"
-                                                            >
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="javascript:void(0);"
-                                                               data-mode="del" data-title="删除操作"
-                                                               data-msg="你确定删除<固管家处置方测试机构>节点及其所有的子节点吗?(慎重操作)"
-                                                               data-url="office/delete" data-data="{id:'54'}"
-                                                            >
-                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="center">
-                                                        <a href="detail.html"
-                                                           data-title="<重庆市环境保护局>详情" data-mode="detail"
-                                                           data-url="office/detail/showlayer"
-                                                           data-data="{id:'57'}"
-                                                           data-width="50%"
-                                                        >(<b>公司</b>)重庆市环境保护局</a>
-                                                    </td>
-                                                    <td class="center" style="display: none;">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        重庆市
-                                                    </td>
-                                                    <td class="center">
-                                                        张天霸
-                                                    </td>
-                                                    <td class="center">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="green" href="save.html"
-                                                               data-mode="page" data-title="<重庆市环境保护局>编辑"
-                                                               data-url="office/edit/showlayer"
-                                                               data-data="{id:'57',parentId:''}"
-                                                               data-width="50%"
-                                                            >
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="javascript:void(0);"
-                                                               data-mode="del" data-title="删除操作"
-                                                               data-msg="你确定删除<重庆市环境保护局>节点及其所有的子节点吗?(慎重操作)"
-                                                               data-url="office/delete" data-data="{id:'57'}"
-                                                            >
-                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="center">
-                                                        <a href="detail.html"
-                                                           data-title="<重庆环投再生资源有限公司>详情" data-mode="detail"
-                                                           data-url="office/detail/showlayer"
-                                                           data-data="{id:'55'}"
-                                                           data-width="50%"
-                                                        >(<b>公司</b>)重庆环投再生资源有限公司</a>
-                                                    </td>
-                                                    <td class="center" style="display: none;">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        重庆市
-                                                    </td>
-                                                    <td class="center">
-
-                                                    </td>
-                                                    <td class="center">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="green" href="save.html"
-                                                               data-mode="page" data-title="<重庆环投再生资源有限公司>编辑"
-                                                               data-url="office/edit/showlayer"
-                                                               data-data="{id:'55',parentId:''}"
-                                                               data-width="50%"
-                                                            >
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="javascript:void(0);"
-                                                               data-mode="del" data-title="删除操作"
-                                                               data-msg="你确定删除<重庆环投再生资源有限公司>节点及其所有的子节点吗?(慎重操作)"
-                                                               data-url="office/delete" data-data="{id:'55'}"
-                                                            >
-                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="center">
-                                                        <a href="detail.html"
-                                                           data-title="<重庆市利特环保工程有限公司（德感）>详情" data-mode="detail"
-                                                           data-url="office/detail/showlayer"
-                                                           data-data="{id:'13'}"
-                                                           data-width="50%"
-                                                        >(<b>公司</b>)重庆市利特环保工程有限公司（德感）</a>
-                                                    </td>
-                                                    <td class="center" style="display: none;">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        重庆市
-                                                    </td>
-                                                    <td class="center">
-                                                        薛莉萍
-                                                    </td>
-                                                    <td class="center">
-                                                        15909308893
-                                                    </td>
-                                                    <td class="center">
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="green" href="save.html"
-                                                               data-mode="page" data-title="<重庆市利特环保工程有限公司（德感）>编辑"
-                                                               data-url="office/edit/showlayer"
-                                                               data-data="{id:'13',parentId:''}"
-                                                               data-width="50%"
-                                                            >
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="javascript:void(0);"
-                                                               data-mode="del" data-title="删除操作"
-                                                               data-msg="你确定删除<重庆市利特环保工程有限公司（德感）>节点及其所有的子节点吗?(慎重操作)"
-                                                               data-url="office/delete" data-data="{id:'13'}"
-                                                            >
-                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="center">
-                                                        <a href="detail.html"
-                                                           data-title="<重庆市利特环保工程有限公司（黑石子）>详情" data-mode="detail"
-                                                           data-url="office/detail/showlayer"
-                                                           data-data="{id:'14'}"
-                                                           data-width="50%"
-                                                        >(<b>公司</b>)重庆市利特环保工程有限公司（黑石子）</a>
-                                                    </td>
-                                                    <td class="center" style="display: none;">
-
-                                                    </td>
-                                                    <td class="center">
-                                                        重庆市
-                                                    </td>
-                                                    <td class="center">
-                                                        薛莉萍
-                                                    </td>
-                                                    <td class="center">
-                                                        15909308893
-                                                    </td>
-                                                    <td class="center">
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="green" href="javascript:void(0);"
-                                                               data-mode="page" data-title="<重庆市利特环保工程有限公司（黑石子）>编辑"
-                                                               data-url="office/edit/showlayer"
-                                                               data-data="{id:'14',parentId:''}"
-                                                               data-width="50%"
-                                                            >
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="javascript:void(0);"
-                                                               data-mode="del" data-title="删除操作"
-                                                               data-msg="你确定删除<重庆市利特环保工程有限公司（黑石子）>节点及其所有的子节点吗?(慎重操作)"
-                                                               data-url="office/delete" data-data="{id:'14'}"
-                                                            >
+                                                            <a class="red" style="cursor:pointer">
                                                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                             </a>
                                                         </div>
@@ -670,25 +278,26 @@
                                                 <div style="float: left;">
                                                     <div style="padding-top:5px;">
 			<span class="badge badge-info">
-				当前第 1 页 / 6 页，共 54 条数据
+				当前第 {{pageInfo.pageNum}} 页 / {{pageInfo.pages}}页，共
+                {{pageInfo.total}} 条数据
 			</span>
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <div class="pagination no-margin pull-right clearfix">
-                                                        <li class="prev disabled"><a href="javascript:void(0);"
-                                                                                     onclick="">首页</a></li>
-                                                        <li class="prev disabled"><a href="javascript:void(0);"
-                                                                                     onclick="">上一页</a></li>
-                                                        <li class="active"><a href="javascript:void(0);"
-                                                                              onclick="">1</a></li>
-                                                        <li><a href="javascript:void(0);" onclick="">2</a></li>
-                                                        <li><a href="javascript:void(0);" onclick="">3</a></li>
-                                                        <li><a href="javascript:void(0);" onclick="">4</a></li>
-                                                        <li><a href="javascript:void(0);" onclick="">5</a></li>
-                                                        <li><a href="javascript:void(0);" onclick="">6</a></li>
-                                                        <li><a href="javascript:void(0);" onclick="">下一页</a></li>
-                                                        <li><a href="javascript:void(0);" onclick="">尾页</a></li>
+                                                        <li class="prev "><a href="javascript:void(0);" @click="selectAll()">首页</a></li>
+
+                                                        <li
+                                                                v-if="pageInfo.hasPreviousPage" class="prev"><a href="javascript:void(0);" @click="selectAll(pageInfo.prePage,pageInfo.pageSize)">上一页</a></li>
+                                                        <li v-else class="prev disabled"><a href="javascript:void(0);">上一页</a></li>
+
+                                                        <li :class="pageInfo.pageNum==p?'active':''" v-for="p in pageInfo.navigatepageNums"><a href="javascript:void(0);"  @click="selectAll(p,pageInfo.pageSize)">{{p}}</a></li>
+
+                                                        <li v-if="pageInfo.hasNextPage" class="next"><a href="javascript:void(0);" @click="selectAll(pageInfo.nextPage,pageInfo.pageSize)">下一页</a></li>
+                                                        <li v-else class="next disabled"><a href="javascript:void(0);">下一页</a></li>
+
+
+                                                        <li class="next "><a href="javascript:void(0);" @click="selectAll(pageInfo.pages,pageInfo.pageSize)">尾页</a></li>
                                                     </div>
 
                                                 </div>
@@ -744,7 +353,9 @@
 <script type="text/javascript" src="static/js/jquery.form.js"></script>
 <script type="text/javascript" src="static/js/bootstrap-contextmenu.js"></script>
 <script type="text/javascript" src="static/js/jquery.nicescroll.min.js"></script>
-<!--<script type="text/javascript" src="static/js/public.js"></script>-->
+<script type="text/javascript" src="static/vue/vue.js"></script>
+<script type="text/javascript" src="static/vue/axios.js"></script>
+<script type="text/javascript" src="static/js/office/office.js"></script>
 
 
 </body>
