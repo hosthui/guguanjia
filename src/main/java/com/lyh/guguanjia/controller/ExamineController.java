@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("manager/examine")
 public class ExamineController {
@@ -36,6 +38,7 @@ public class ExamineController {
 	public Result alloffice(){
 		SysOffice sysOffice = new SysOffice();
 		sysOffice.setDelFlag("0");
-		return new Result(service.select(sysOffice));
+		List<SysOffice> select = service.select(sysOffice);
+		return new Result(select);
 	}
 }

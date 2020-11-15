@@ -5,8 +5,8 @@ let vm = new Vue({
         wastetypes:{},
         wastes:{},
         comwastes:{},
-        tid:'',
-        wid:''
+        type:'0',
+        waste:'0',
     },
     methods: {
         init: function () {
@@ -22,12 +22,18 @@ let vm = new Vue({
             this.wastes={}
             axios({
                 url: "manager/office/allWaste",
-                params:{'parentId':this.tid}
+                params:{'parentId':this.type.id}
             }).then(response => {
                 this.wastes =response.data.obj
             }).catch(error => {
                 layer.msg(error.message)
             })
+        },
+        addcomwastes:function(){
+            this.comwastes.push({'wasteTypeCode':this.type.code,'name':this.waste.name,'code':this.waste.code,'id':this.waste.id});
+        },
+        removecomwastes:function(index){
+            this.comwastes.splice(index,1)
         },
         companywaste:function(id){
             axios({
@@ -39,6 +45,7 @@ let vm = new Vue({
                 layer.msg(error.message)
             })
         },
+
         doUpdate: function (data) {
             layer.obj = data;
             layer.open({

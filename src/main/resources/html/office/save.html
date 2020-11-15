@@ -168,10 +168,10 @@
                                             <td class="DataTD width-100">
                                                 <select class="width-100" name="wasteType "
                                                         id="wasteType"
-                                                        v-model="tid"
+                                                        v-model="type"
                                                         @change="allwaste()">
                                                     <option value="0">请选择废物类型</option>
-                                                    <option v-for="type in wastetypes" :value="type.id">
+                                                    <option v-for="type in wastetypes" :value="type">
                                                         {{type.code}}-{{type.name}}
                                                     </option>
                                                 </select>
@@ -182,10 +182,10 @@
                                             <td class="DataTD width-100">
                                                 <select class="width-100"
                                                          id="waste"
-                                                        v-model="wid">
+                                                        v-model="waste" @change="addcomwastes()">
                                                     <option value="0">请选择废物</option>
                                                     <option
-                                                            v-for="waste in wastes" :value="waste.id">
+                                                            v-for="waste in wastes" :value="waste">
                                                         {{waste.code}}-{{waste.name}}
                                                     </option>
                                                 </select>
@@ -196,7 +196,7 @@
                                             <td class="CaptionTD"></td>
                                             <td class="DataTD width-100" id="selectedWaste">
                                                 <p :id="'waste-'+waste.id"  v-for="(waste,index) in comwastes">
-                                                    <i class="fa fa-minus-circle" @click="removeWaste(index)"></i>&nbsp;
+                                                    <i class="fa fa-minus-circle" @click="removecomwastes(index)"></i>&nbsp;
                                                     {{waste.wasteTypeCode}}-{{waste.name}} &gt; {{waste.code}}
                                                     <input type="hidden" name="waste" value="3">
                                                 </p>
