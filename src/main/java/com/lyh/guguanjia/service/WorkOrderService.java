@@ -7,8 +7,7 @@ import java.util.Map;
 
 public interface WorkOrderService extends BaseService<WorkOrder,Long>{
 
-	PageInfo<WorkOrder> selectpage(int pageNum, int pageSize,
-	                    Map<String,String> workCondition);
+	PageInfo<WorkOrder> selectpage(int pageNum, int pageSize, Map<String, String> workCondition);
 
 	Map<String,Object> selectdetail(Integer id);
 

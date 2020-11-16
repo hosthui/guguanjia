@@ -18,6 +18,6 @@ public interface SysUserMapper extends Mapper<SysUser> {
 			"and not " +
 			"EXISTS(select 1 FROM sys_user_role sur WHERE sur.user_id=sus.id " +
 			"and sur.role_id=#{map.roleId})")
-	List<SysUser> selectByunRole(@Param("map") Map<String,String> map);
+	List<SysUser> selectByunRole(@Param("map") Map<String, String> map);
 
 }

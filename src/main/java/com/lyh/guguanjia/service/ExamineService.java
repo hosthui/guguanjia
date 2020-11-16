@@ -6,6 +6,5 @@ import com.lyh.guguanjia.entity.ExamineCondition;
 
 public interface ExamineService extends BaseService<Examine,Long> {
 
-	PageInfo<Examine> selectpage(int pageNum, int pageSize,
-	                             ExamineCondition examineCondition);
+	PageInfo<Examine> selectpage(int pageNum, int pageSize, ExamineCondition examineCondition);
 }

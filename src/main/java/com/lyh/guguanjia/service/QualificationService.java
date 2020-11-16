@@ -6,6 +6,5 @@ import com.lyh.guguanjia.entity.QualificationCondition;
 
 public interface QualificationService extends BaseService<Qualification,Long> {
 
-	 PageInfo<Qualification> selectPage(Integer pageNum, Integer PageSize,
-	                                    QualificationCondition qualificationCondition);
+	 PageInfo<Qualification> selectPage(Integer pageNum, Integer PageSize, QualificationCondition qualificationCondition);
 }

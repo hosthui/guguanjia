@@ -121,16 +121,16 @@ let vm = new Vue({
                 }
             })
         },
-        doDelete: function (area) {
+        doDelete: function (comp) {
             layer.msg('确定删除？', {
                 time: 20000 //不自动关闭
                 , btn: ['确定', '取消']
                 , yes: () => {
-                    area.delFlag = 1
+                    comp.delFlag = 1
                     axios({
-                        url: "manager/area/doupdate",
+                        url: "manager/office/doupdate",
                         method: "put",
-                        data: area
+                        data: {'company':comp}
                     }).then(request => {
                         layer.msg(request.data.msg)
                         this.selectAll(this.pageInfo.pageNum, this.pageInfo.pageSize)

@@ -13,7 +13,7 @@ import java.util.Map;
 public interface WorkOrderMapper extends Mapper<WorkOrder> {
 
 	@SelectProvider(type = WorkOrderSqlProvider.class,method = "selectSqlPage")
-	List<WorkOrder> selectpage(Map<String,String> workCondition);
+	List<WorkOrder> selectpage(Map<String, String> workCondition);
 
 	
 	@Select(" SELECT  " +

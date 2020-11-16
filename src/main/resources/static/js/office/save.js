@@ -1,10 +1,17 @@
 let vm = new Vue({
     el: '.main-content',  //选中整个main
     data: {
+        ueditorConfig:{
+            UEDITOR_HOME_URL:"static/ueditor/",
+            initialFrameWidth:"100%",
+            initialFrameHeight:"100%",
+            serverUrl:"manager/office/doUeditor"
+        },
         company: {},       //初始化对象     vue建议声明对象同时进行初始化，避免undefinded
         wastetypes:{},
         wastes:{},
-        comwastes:{},
+        comwastes:[],
+        oldcomwastes:[],
         type:'0',
         waste:'0',
     },
@@ -40,50 +47,54 @@ let vm = new Vue({
                 url: "manager/office/companyw",
                 params:{'officeId':id}
             }).then(response => {
-                this.comwastes =response.data.obj
+                let was=response.data.obj
+                this.comwastes=was
+                for (let wasKey in was) {
+                    this.oldcomwastes.push(was[wasKey].id)
+                }
             }).catch(error => {
                 layer.msg(error.message)
             })
         },
-
-        doUpdate: function (data) {
-            layer.obj = data;
+        toSelect:function (aid) {
+            layer.id=aid;
             layer.open({
                 type: 2,
-                title: false,
+                title:false,
                 shadeClose: true,
                 shade: 0.1,
-                area: ['80%', '80%'],
-                content: 'manager/app/toupdate',
-                end: () => {
-                    this.selectAll(this.pageInfo.pageNum, this.pageInfo.pageSize)
+                area: ['100%', '100%'],
+                content: 'manager/office/toselect',
+                end: ()=> {
+                    this.company.areaName=layer.parentName
+                    this.company.areaId=layer.id
                 }
             })
         },
-        toDel: function (app) {
-            app.delFlag = 1
-            layer.msg('确认删除', {
-                time: 20000, //20s后自动关闭
-                btn: ['确定', '取消'],
-                yes: () => {
-                    axios({
-                        url: "manager/app/update",
-                        method: "put",
-                        data: app
-                    }).then(response => {
-                        layer.msg(response.data.message)
-                        this.selectAll();
-                    }).catch(error => {
-                        layer.msg(error.message)
-                    })
-
-                }
-            });
+        doUpdate: function () {
+            let _comwas=[];
+            for (let comwastesKey in this.comwastes) {
+                _comwas.push(this.comwastes[comwastesKey].id)
+            }
+            axios({
+                url: "manager/office/doupdate",
+                method:"put",
+                data:{'company':this.company,'oldcomwastes':this.oldcomwastes,'comwastes':_comwas}
+            }).then(response => {
+                let frameIndex = parent.layer.getFrameIndex(window.name);
+                parent.layer.msg("更新成功");
+                parent.layer.close(frameIndex)
+            }).catch(error => {
+                layer.msg(error.message)
+            })
         }
     },
     created: function () {
         this.company=parent.layer.obj
         this.init();
         this.companywaste(this.company.id)
+    },
+    components:{
+        VueUeditorWrap
     }
 });

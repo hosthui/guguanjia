@@ -88,9 +88,6 @@ public class StatueController {
 		if ( "config".equals(action) ){
 			exec= new ActionEnter(request, request.getServletContext().getRealPath("/")).exec();
 		}else if ( "uploadimage".equals(action) ){
-
-
-
 			String originalFilename = upfile.getOriginalFilename();
 			String type = originalFilename.substring(originalFilename.lastIndexOf("."));
 			File file = new File(uploadPath + originalFilename);
