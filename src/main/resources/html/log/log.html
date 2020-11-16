@@ -72,9 +72,9 @@
 
 	<div class="main-content">
 		<div class="breadcrumbs" id="breadcrumbs">
-			<script type="text/javascript">
-                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-			</script>
+			<!--<script type="text/javascript">-->
+                <!--try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}-->
+			<!--</script>-->
 
 			<ul class="tab" id="breadcrumb">
 				<!-- <li class="active" >
@@ -185,7 +185,10 @@
 									<form action="#" method="post" id="search-form" target="list-page" class="clearfix">
 										<div class="pull-left width-25">
 											<label>类型：</label>
-											<select class="search_contains" name="type" id="chosen-select">
+											<select class="search_contains"
+                                                    name="type"
+                                                    id="chosen-select"
+                                                    v-model="log.type">
 												<option value="">全部</option>
 												<option value="1">
 													操作日志
@@ -193,14 +196,20 @@
 												<option value="2">
 													异常日志
 												</option>
-
 											</select>
 										</div>
 										<div class="pull-left width-30">
 											<label>描述：</label>
-											<input type="text" class="width-80" name="description"/>
+											<input type="text"
+                                                   class="width-80"
+                                                   name="description"
+                                                   v-model="log.description"/>
 										</div>
-										<div class="pull-left"><span class="btn btn-info btn-sm " id="search-btn">查 询</span></div>
+										<div class="pull-left"><span
+                                                class="btn btn-info btn-sm "
+                                                id="search-btn"
+                                                @click="selectAll()">查
+                                            询</span></div>
 									</form>
 									<hr/>
 									<div id="list-page">
@@ -218,28 +227,26 @@
 											</thead>
 
 											<tbody>
-											<tr>
-												<td class="center">异常日志</td>
-												<td class="center">java.lang.…</td>
-												<td class="center"></td>
-												<td class="center">POST</td>
-												<td class="center">[参数1，类型:Long，值:135]</td>
-												<td class="center">/guguanjia/manager/work/showlayer</td>
+											<tr v-for="log in pageInfo.list">
+												<td class="center">
+                                                    {{log.type==1?"正常日志":"异常日志" }}
+                                                </td>
+                                                <td class="center"><p>{{log
+                                                    .exception}}</p></td>
+												<td class="center">
+                                                    {{log.description}}
+                                                </td>
+												<td class="center">{{log.method}}</td>
+												<td class="center" >{{log.params}}</td>
+												<td class="center">{{log.requestUri}}</td>
 												<td class="center">
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="purple" href="log-detail.html"
-														   data-mode="detail" data-title="详情"
-														   data-url="syslog/detail/showlayer"
-														   data-data="{id:'740'}"
-														   data-width="50%">
+														<a class="purple"
+                                                           style="cursor:pointer" @click="toDetail(log)">
 															<i class="ace-icon fa fa-search-plus bigger-130"></i>
 														</a>
 
-														<a class="red" href="javascript:void(0);"
-														   data-mode="del" data-title="删除操作"
-														   data-msg="你确定删除此数据吗?"
-														   data-url="syslog/delete"
-														   data-data="{id:'740'}">
+														<a class="red" style="cursor:pointer">
 															<i class="ace-icon fa fa-trash-o bigger-130"></i>
 														</a>
 													</div>
@@ -334,6 +341,10 @@
 <script type="text/javascript" src="static/js/bootstrap-contextmenu.js"></script>
 <script type="text/javascript" src="static/js/jquery.nicescroll.min.js"></script>
 <script type="text/javascript" src="static/js/public.js"></script>
+
+<script type="text/javascript" src="static/vue/vue.js"></script>
+<script type="text/javascript" src="static/vue/axios.js"></script>
+<script type="text/javascript" src="static/js/log/log.js"></script>
 
 
 </body>

@@ -26,9 +26,9 @@ public class SysLogServiceImpl extends BaseServiceImpl<SysLog,Long> implements S
 	}
 
 	@Override
-	public PageInfo<SysLog> selectPage(int pageNum,int pageSize){
+	public PageInfo<SysLog> selectPage(int pageNum,int pageSize,SysLog sysLog){
 		PageHelper.startPage(pageNum,pageSize);
-		List<SysLog> sysLogs = sysLogMapper.selectAll();
+		List<SysLog> sysLogs = sysLogMapper.selectPage(sysLog);
 		return new PageInfo<>(sysLogs);
 	}
 

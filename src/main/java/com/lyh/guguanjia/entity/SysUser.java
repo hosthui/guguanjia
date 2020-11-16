@@ -1,8 +1,8 @@
 package com.lyh.guguanjia.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Table(name = "sys_user")
@@ -11,6 +11,7 @@ public class SysUser {
      * 编号
      */
     @Id
+	@GeneratedValue(generator="JDBC")
     private Long id;
 
     /**
@@ -79,6 +80,7 @@ public class SysUser {
      * 最后登陆时间
      */
     @Column(name = "login_date")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "CTT")
     private Date loginDate;
 
     /**
@@ -91,6 +93,7 @@ public class SysUser {
      * 创建时间
      */
     @Column(name = "create_date")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "CTT")
     private Date createDate;
 
     /**
@@ -103,6 +106,7 @@ public class SysUser {
      * 更新时间
      */
     @Column(name = "update_date")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "CTT")
     private Date updateDate;
 
     /**
@@ -124,7 +128,42 @@ public class SysUser {
     @Column(name = "head_picture")
     private String headPicture;
 
-    /**
+//	role_name,
+//	sso.`name` office_name,
+//	ssr.id role_id
+
+	@Transient
+	private String roleName;
+	@Transient
+	private String officeName;
+	@Transient
+	private Long roleId;
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public String getOfficeName() {
+		return officeName;
+	}
+
+	public void setOfficeName(String officeName) {
+		this.officeName = officeName;
+	}
+
+	public Long getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
+	}
+
+	/**
      * 获取编号
      *
      * @return id - 编号

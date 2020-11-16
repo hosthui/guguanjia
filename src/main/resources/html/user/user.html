@@ -1,8 +1,8 @@
-
 <!-- 头部 -->
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
+    <base href="/guguanjia/">
 	<meta charset="utf-8" />
 	<meta name="renderer" content="webkit">
 
@@ -13,46 +13,46 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 	<!-- bootstrap & fontawesome -->
-	<link rel="stylesheet" href="../../../static/bootstrap/bootstrap.min.css" />
-	<link rel="stylesheet" href="../../../static/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="static/bootstrap/bootstrap.min.css" />
+	<link rel="stylesheet" href="static/css/font-awesome.min.css" />
 
-	<link rel="stylesheet" href="../../../static/chosen/chosen.min.css" />
+	<link rel="stylesheet" href="static/chosen/chosen.min.css" />
 
 	<!-- ace styles -->
-	<link rel="stylesheet" href="../../../static/ace/css/ace.min.css" id="main-ace-style" />
+	<link rel="stylesheet" href="static/ace/css/ace.min.css" id="main-ace-style" />
 
 	<!--[if !IE]> -->
-	<script src="../../../static/jquery/jquery.js"></script>
+	<script src="static/jquery/jquery.js"></script>
 	<!-- <![endif]-->
 
 	<!--[if IE]>
-	<script src="../../../static/jquery/jquery-1.11.1.min.js"></script>
+	<script src="static/jquery/jquery-1.11.1.min.js"></script>
 	<![endif]-->
 
 	<!--[if lte IE 9]>
-	<link rel="stylesheet" href="../../../static/ace/css/ace-part2.min.css" />
+	<link rel="stylesheet" href="static/ace/css/ace-part2.min.css" />
 	<![endif]-->
-	<link rel="stylesheet" href="../../../static/ace/css/ace-skins.min.css" />
-	<link rel="stylesheet" href="../../../static/ace/css/ace-rtl.min.css" />
+	<link rel="stylesheet" href="static/ace/css/ace-skins.min.css" />
+	<link rel="stylesheet" href="static/ace/css/ace-rtl.min.css" />
 
 	<!--[if lte IE 9]>
-	<link rel="stylesheet" href="../../../static/ace/css/ace-ie.min.css" />
+	<link rel="stylesheet" href="static/ace/css/ace-ie.min.css" />
 	<![endif]-->
 
-	<link rel="stylesheet" href="../../../static/ztree/metro.css" />
-	<link rel="stylesheet" href="../../../static/validate/css/validform.css" />
-	<link rel="stylesheet" href="../../../static/css/custom.css" />
+	<link rel="stylesheet" href="static/ztree/metro.css" />
+	<link rel="stylesheet" href="static/validate/css/validform.css" />
+	<link rel="stylesheet" href="static/css/custom.css" />
 
 
 	<!-- ace settings handler -->
-	<script src="../../../static/ace/js/ace-extra.min.js"></script>
+	<script src="static/ace/js/ace-extra.min.js"></script>
 
 	<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 
 	<!--[if lte IE 8]>
-	<script src="../../../static/bootstrap/html5shiv.min.js"></script>
-	<script src="../../../static/bootstrap/respond.min.js"></script>
+	<script src="static/bootstrap/html5shiv.min.js"></script>
+	<script src="static/bootstrap/respond.min.js"></script>
 	<script>var ie8 = "ie8";</script>
 	<![endif]-->
 </head>
@@ -60,572 +60,20 @@
 <body class="no-skin" id="body-content">
 <!-- 顶部条 -->
 <div id="navbar" class="navbar navbar-default">
-	<script type="text/javascript">
-        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
-	</script>
 
-	<div class="navbar-container clearfix" id="navbar-container">
-		<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
-			<span class="sr-only">Toggle sidebar</span>
-
-			<span class="icon-bar"></span>
-
-			<span class="icon-bar"></span>
-
-			<span class="icon-bar"></span>
-		</button>
-
-		<div class="navbar-header pull-left" style="min-width:190px;">
-			<a  class="navbar-brand">
-				<small>
-					固管家服务平台
-				</small>
-			</a>
-		</div>
-		<!-- <div class="navbar-header">
-            <ul class="nav navbar-nav">
-                <li class="">
-                    <a  data-trigger="ajax" data-target="#fill-main-content" class="bigger-120">
-                    <i class="menu-icon fa "></i>&nbsp;
-                    </a>
-                </li>
-            </ul>
-        </div> -->
-
-		<div class="navbar-buttons navbar-header pull-right" role="navigation">
-			<ul class="nav ace-nav">
-
-				<li class="green">
-					<a class="dropdown-toggle" href="javascript:void(0);" id="fullscreen" title="全屏"
-					   onclick="launchFullscreen(document.documentElement);">
-						<i class="ace-icon fa fa-arrows-alt "></i>
-					</a>
-				</li>
-
-				<li class="purple" style="display:none;">
-					<a data-toggle="dropdown" class="dropdown-toggle" >
-						<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-						<span class="badge badge-important">8</span>
-					</a>
-
-					<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-						<li class="dropdown-header">
-							<i class="ace-icon fa fa-exclamation-triangle"></i>
-							8 Notifications
-						</li>
-
-						<li>
-							<a >
-								<div class="clearfix">
-											<span class="pull-left">
-												<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-												New Comments
-											</span>
-									<span class="pull-right badge badge-info">+12</span>
-								</div>
-							</a>
-						</li>
-
-						<li>
-							<a >
-								<i class="btn btn-xs btn-primary fa fa-user"></i>
-								Bob just signed up as an editor ...
-							</a>
-						</li>
-
-						<li>
-							<a >
-								<div class="clearfix">
-											<span class="pull-left">
-												<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
-												New Orders
-											</span>
-									<span class="pull-right badge badge-success">+8</span>
-								</div>
-							</a>
-						</li>
-
-						<li>
-							<a >
-								<div class="clearfix">
-											<span class="pull-left">
-												<i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
-												Followers
-											</span>
-									<span class="pull-right badge badge-info">+11</span>
-								</div>
-							</a>
-						</li>
-
-						<li class="dropdown-footer">
-							<a >
-								See all notifications
-								<i class="ace-icon fa fa-arrow-right"></i>
-							</a>
-						</li>
-					</ul>
-				</li>
-
-				<li class="light-blue">
-					<a data-toggle="dropdown"  class="dropdown-toggle">
-						<img class="nav-user-photo" src="../../../static/img/small-male-pic.png" />
-						<span class="user-info">
-									<small>你好,</small>
-									超级管理员
-								</span>
-
-						<i class="ace-icon fa fa-caret-down"></i>
-					</a>
-
-					<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-						<li>
-							<a href="../userCenter/userCenter.html">
-								<i class="ace-icon fa fa-user"></i>
-								我的资料
-							</a>
-						</li>
-
-						<li class="divider"></li>
-
-						<li>
-							<a href="../login.html">
-								<i class="ace-icon fa fa-power-off"></i>
-								退出
-							</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div><!-- /.navbar-container -->
 </div>
 <!-- 主体 -->
 <div class="main-container" id="main-container">
-	<script type="text/javascript">
-        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
-	</script>
+
 
 
 	<div id="sidebar" class="sidebar responsive">
-		<script type="text/javascript">
-            try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
-		</script>
 
-		<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-			<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-				<button class="btn btn-success">
-					<i class="ace-icon fa fa-signal"></i>
-				</button>
-
-				<button class="btn btn-info">
-					<i class="ace-icon fa fa-pencil"></i>
-				</button>
-
-				<button class="btn btn-warning">
-					<i class="ace-icon fa fa-users"></i>
-				</button>
-
-				<button class="btn btn-danger">
-					<i class="ace-icon fa fa-cogs"></i>
-				</button>
-			</div>
-
-			<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-				<span class="btn btn-success"></span>
-
-				<span class="btn btn-info"></span>
-
-				<span class="btn btn-warning"></span>
-
-				<span class="btn btn-danger"></span>
-			</div>
-		</div><!-- /.sidebar-shortcuts -->
-
-		<ul class="nav nav-list" id="sidebar-menu">
-			<li data-level="1">
-
-				<a
-						href="javascript:void(0);" class="dropdown-toggle"
-						haschild="true"
-				>
-					<i class="menu-icon fa fa-user"></i>
-					<span class="menu-text"
-						  style="vertical-align: middle;"
-					> 个人中心 </span>
-					<b class="arrow fa fa-angle-down"></b>
-				</a>
-				<b class="arrow"></b>
-
-				<ul class="submenu nav-hide" style="display:none;">
-					<li data-level="2">
-
-						<a
-								href="../userCenter/userCenter.html"
-								id="menu_manageruserCenter"
-								haschild="false"
-						>
-							<i class="menu-icon fa fa-file-o"></i>
-							<span class="menu-text"
-							> 我的资料 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-				</ul>
-			</li>
-			<li data-level="1">
-
-				<a
-						href="javascript:void(0);" class="dropdown-toggle"
-						haschild="true"
-				>
-					<i class="menu-icon fa fa-lastfm"></i>
-					<span class="menu-text"
-						  style="vertical-align: middle;"
-					> 单位管理 </span>
-					<b class="arrow fa fa-angle-down"></b>
-				</a>
-				<b class="arrow"></b>
-
-				<ul class="submenu nav-hide" style="display:none;">
-					<li data-level="2">
-
-						<a
-								href="../office/office-detail.html"
-								id="menu_managercompanydetail"
-								haschild="false"
-						>
-							<i class="menu-icon "></i>
-							<span class="menu-text"
-							> 单位信息 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../user/user.html"
-								id="menu_managercompanyaccounts"
-								haschild="false"
-						>
-							<i class="menu-icon "></i>
-							<span class="menu-text"
-							> 单位账号 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../work/company/work.html"
-								id="menu_managercompanywork"
-								haschild="false"
-						>
-							<i class="menu-icon "></i>
-							<span class="menu-text"
-							> 电子台账 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-				</ul>
-			</li>
-			<li data-level="1">
-
-				<a
-						href="javascript:void(0);" class="dropdown-toggle"
-						haschild="true"
-				>
-					<i class="menu-icon fa fa-puzzle-piece"></i>
-					<span class="menu-text"
-						  style="vertical-align: middle;"
-					> 业务管理 </span>
-					<b class="arrow fa fa-angle-down"></b>
-				</a>
-				<b class="arrow"></b>
-
-				<ul class="submenu nav-hide" style="display:none;">
-					<li data-level="2">
-
-						<a
-								href="../work/admin/work.html"
-								id="menu_manageradminwork"
-								haschild="false"
-						>
-							<i class="menu-icon "></i>
-							<span class="menu-text"
-							> 电子台账 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../qualification/index.html"
-								id="menu_managerqualificationindex"
-								haschild="false"
-						>
-							<i class="menu-icon "></i>
-							<span class="menu-text"
-							> 资质审核 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../demand/index.html"
-								id="menu_managerdemandindex"
-								haschild="false"
-						>
-							<i class="menu-icon "></i>
-							<span class="menu-text"
-							> 服务需求 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../examine/index.html"
-								id="menu_managerexamineindex"
-								haschild="false"
-						>
-							<i class="menu-icon "></i>
-							<span class="menu-text"
-							> 考核管理 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../app/index.html"
-								id="menu_managerappindex"
-								haschild="false"
-						>
-							<i class="menu-icon "></i>
-							<span class="menu-text"
-							> APP管理 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../statute/index.html"
-								id="menu_managerstatuteindex"
-								haschild="false"
-						>
-							<i class="menu-icon fa fa-bolt"></i>
-							<span class="menu-text"
-							> 法律法规 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-				</ul>
-			</li>
-			<li data-level="1">
-
-				<a
-						href="javascript:void(0);" class="dropdown-toggle"
-						haschild="true"
-				>
-					<i class="menu-icon fa fa-group"></i>
-					<span class="menu-text"
-						  style="vertical-align: middle;"
-					> 机构用户 </span>
-					<b class="arrow fa fa-angle-down"></b>
-				</a>
-				<b class="arrow"></b>
-
-				<ul class="submenu nav-hide" style="display:none;">
-					<li data-level="2">
-
-						<a
-								href="../area/area.html"
-								id="menu_managerarea"
-								haschild="false"
-						>
-							<i class="menu-icon fa fa-globe"></i>
-							<span class="menu-text"
-							> 区域管理 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../office/office.html"
-								id="menu_manageroffice"
-								haschild="false"
-						>
-							<i class="menu-icon fa fa-sitemap"></i>
-							<span class="menu-text"
-							> 机构管理 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../user/user-list.html"
-								id="menu_managersysuser"
-								haschild="false"
-						>
-							<i class="menu-icon fa fa-user"></i>
-							<span class="menu-text"
-							> 用户管理 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../role/role.html"
-								id="menu_managerrole"
-								haschild="false"
-						>
-							<i class="menu-icon fa fa-graduation-cap"></i>
-							<span class="menu-text"
-							> 角色管理 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-				</ul>
-			</li>
-			<li data-level="1">
-
-				<a
-						href="javascript:void(0);" class="dropdown-toggle"
-						haschild="true"
-				>
-					<i class="menu-icon fa fa-cogs"></i>
-					<span class="menu-text"
-						  style="vertical-align: middle;"
-					> 系统管理 </span>
-					<b class="arrow fa fa-angle-down"></b>
-				</a>
-				<b class="arrow"></b>
-
-				<ul class="submenu nav-hide" style="display:none;">
-					<li data-level="2">
-
-						<a
-								href="../menu/menu.html"
-								id="menu_managermenu"
-								haschild="false"
-						>
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"
-							> 菜单配置 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../dict/dict.html"
-								id="menu_managerdict"
-								haschild="false"
-						>
-							<i class="menu-icon fa fa-calculator"></i>
-							<span class="menu-text"
-							> 字典管理 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../log/log.html"
-								id="menu_managersyslog"
-								haschild="false"
-						>
-							<i class="menu-icon fa fa-copy"></i>
-							<span class="menu-text"
-							> 日志查询 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-				</ul>
-			</li>
-			<li data-level="1">
-
-				<a
-						href="javascript:void(0);" class="dropdown-toggle"
-						haschild="true"
-				>
-					<i class="menu-icon fa fa-binoculars"></i>
-					<span class="menu-text"
-						  style="vertical-align: middle;"
-					> 系统监控 </span>
-					<b class="arrow fa fa-angle-down"></b>
-				</a>
-				<b class="arrow"></b>
-
-				<ul class="submenu nav-hide" style="display:none;">
-					<li data-level="2">
-
-						<a
-								href="../ehcache/ehcache.html"
-								id="menu_managermonitorehcache"
-								haschild="false"
-						>
-							<i class="menu-icon fa fa-crosshairs"></i>
-							<span class="menu-text"
-							> Ehcache监控 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-					<li data-level="2">
-
-						<a
-								href="../jvm/jvm.html"
-								id="menu_managermonitorjvm"
-								haschild="false"
-						>
-							<i class="menu-icon fa fa-flash"></i>
-							<span class="menu-text"
-							> jvm监控 </span>
-						</a>
-						<b class="arrow"></b>
-
-					</li>
-				</ul>
-			</li>
-		</ul><!-- /.nav-list -->
-		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-			<i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-		</div>
-
-		<script type="text/javascript">
-            try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
-		</script>
 	</div>
 
 
 	<div class="main-content">
 		<div class="breadcrumbs" id="breadcrumbs">
-			<script type="text/javascript">
-                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-			</script>
 
 			<ul class="tab" id="breadcrumb">
 				<!-- <li class="active" >
@@ -726,19 +174,20 @@
 					<div id="fill-main-content" style="height:100%">
 						<div class="tabbable">
 							<ul class="nav nav-tabs" id="myTab">
-								<li class="active">
+								<li :class="actives==false?'active':''">
 									<a data-toggle="tab" href="#home">
 										<i class="green ace-icon fa fa-users bigger-120"></i> 用户列表
 									</a>
 								</li>
 
-								<li class=""><a data-toggle="tab" href="#profile">
+								<li :class="!actives==false?'active':''"><a data-toggle="tab" href="#profile">
 									<i class="green ace-icon fa fa-plus bigger-120"></i> 用户添加
 								</a></li>
 							</ul>
 
 							<div class="tab-content">
-								<div id="home" class="tab-pane active clearfix">
+								<div id="home"
+                                     class="tab-pane clearfix" :class="actives==false?'active':''">
 									<div class="widget-container-col ui-sortable">
 										<div class="widget-box ">
 											<div class="widget-header widget-header-small">
@@ -761,17 +210,24 @@
 															<div class="row padding-tb-10">
 																<div class="col-sm-6">
 																	<label class="inline">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：</label>
-																	<input type="text" class="width-80"  name="phone"/>
+																	<input
+                                                                            type="text" class="width-80"  name="phone" v-model="param.phone"/>
 																</div>
 																<div class="col-sm-6">
 																	<label class="inline">真实姓名：</label>
-																	<input type="text" class="width-80"  name="name"/>
+																	<input
+                                                                            type="text" class="width-80"  name="name" v-model="param.name"/>
 																</div>
 															</div>
 															<div class="row padding-tb-10">
 																<div class="col-sm-6">
 																	<label class="inline">所属角色：</label>
-																	<select name="roles" multiple="" class="chosen-select tag-input-style" id="role-select" data-placeholder="选择角色" style="display: none;">
+																	<select
+                                                                            name="roles"  class=" search_contains width-80" id="role-select"
+                                                                    v-model="param.roleId">
+                                                                        <option value="">
+                                                                            请选择角色
+                                                                        </option>
 																		<option value="27">
 																			测试运输方普通人员
 																			&nbsp;(固管家运输方测试机构)
@@ -797,26 +253,27 @@
 																			&nbsp;(固管家服务平台)
 																		</option>
 																	</select>
-																	<div  class="chosen-container chosen-container-multi chosen-container-active " style="width: 80%;" title="" id="role_select_chosen"><ul class="chosen-choices"><li class="search-field"><input onfocus="addC(this);" onblur="removeC(this);" type="text" value="选择角色" class="default" autocomplete="off" style="width: 77px;"></li></ul><div class="chosen-drop"><ul class="chosen-results"><li class="active-result" data-option-array-index="0">测试运输方普通人员 &nbsp;(固管家运输方测试机构)</li><li class="active-result" data-option-array-index="1">单位普通人员 &nbsp;(固管家服务平台)</li><li class="active-result" data-option-array-index="2">单位管理员 &nbsp;(固管家服务平台)</li><li class="active-result" data-option-array-index="3">监管方 &nbsp;(重庆市环境保护局)</li><li class="active-result" data-option-array-index="4">固管家平台服务人员 &nbsp;(固管家服务平台)</li><li class="active-result" data-option-array-index="5">超级管理员 &nbsp;(固管家服务平台)</li></ul></div></div>
-																	<script>
-																		function addC(obj){
-                                                                            var classVal = document.getElementById("role_select_chosen").getAttribute("class");
-                                                                            classVal = classVal.concat("chosen-with-drop");
-                                                                            document.getElementById("role_select_chosen").setAttribute("class",classVal);
-																		}
+																	<!--<script>-->
+																		<!--function addC(obj){-->
+                                                                            <!--var classVal = document.getElementById("role_select_chosen").getAttribute("class");-->
+                                                                            <!--classVal = classVal.concat("chosen-with-drop");-->
+                                                                            <!--document.getElementById("role_select_chosen").setAttribute("class",classVal);-->
+																		<!--}-->
 
-																		function removeC(obj) {
-                                                                            var classVal = document.getElementById("role_select_chosen").getAttribute("class");
-                                                                            classVal = classVal.replace("chosen-with-drop"," ");
-                                                                            document.getElementById("role_select_chosen").setAttribute("class",classVal);
-                                                                        }
+																		<!--function removeC(obj) {-->
+                                                                            <!--var classVal = document.getElementById("role_select_chosen").getAttribute("class");-->
+                                                                            <!--classVal = classVal.replace("chosen-with-drop"," ");-->
+                                                                            <!--document.getElementById("role_select_chosen").setAttribute("class",classVal);-->
+                                                                        <!--}-->
 
-																	</script>
+																	<!--</script>-->
 																</div>
 															</div>
 															<div class="padding-trb-10 col-sm-12">
-																<span class="btn  btn-primary btn-sm col-sm-6" onclick="">全 部 用 户</span>
-																<span class="btn btn-info btn-sm col-sm-6" id="search-btn">条 件 查 询</span>
+																<span
+                                                                        class="btn  btn-primary btn-sm col-sm-6" @click="clearCon()">全 部 用 户</span>
+																<span
+                                                                        class="btn btn-info btn-sm col-sm-6" id="search-btn" @click="selectAll()">条 件 查 询</span>
 															</div>
 														</form>
 
@@ -842,71 +299,40 @@
 											</thead>
 
 											<tbody>
-											<tr>
+											<tr v-for="user in pageInfo.list">
 												<td class="center">
-													<a href="user-detail.html"
-													   data-title="<超级管理员>详情" data-mode="detail"
-													   data-url="user/detail/showlayer" data-width="50%"
-													   data-data="{id:'2'}"
-													>超级管理员</a>
+													<a
+                                                            href="user-detail.html">{{user.name}}</a>
 												</td>
 												<td class="center">
-													&nbsp;(固管家服务平台)
+													&nbsp;({{user.officeName}})
 												</td>
-												<td class="center">超级管理员</td>
-												<td class="center"></td>
-												<td class="center"></td>
-												<td class="center">127.0.0.1</td>
-												<td class="center">2019-09-25 15:28:36</td>
+												<td class="center">
+                                                    {{user.roleName}}
+                                                </td>
+												<td class="center">
+                                                    {{user.phone}}
+                                                </td>
+												<td class="center">
+                                                    {{user.email}}
+                                                </td>
+												<td class="center">
+                                                    {{user.loginIp}}
+                                                </td>
+												<td class="center">
+                                                    {{user.loginDate}}
+                                                </td>
 												<td class="center">
 													<div class="hidden-sm hidden-xs action-buttons">
 
-														<a class="green" href="user-save.html" title="编辑"
-														   data-mode="page" data-title="超级管理员编辑"
-														   data-url="user/edit/showlayer"
-														   data-data="{id:'2'}" data-width="50%">
+														<a class="green"
+                                                           style="cursor:pointer"
+                                                           @click="toUpdate(user)"
+                                                           title="编辑">
 															<i class="ace-icon fa fa-pencil bigger-130"></i>
 														</a>
 
-														<a class="red" href="javascript:void(0);" title="删除"
-														   data-mode="del" data-title="删除操作"
-														   data-msg="你确定删除此数据吗?"
-														   data-url="user/delete" data-data="{id:'2'}">
-															<i class="ace-icon fa fa-trash-o bigger-130"></i>
-														</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													<a href="user-detail.html"
-													   data-title="<平台工作人员1>详情" data-mode="detail"
-													   data-url="user/detail/showlayer" data-width="50%"
-													   data-data="{id:'40'}"
-													>平台工作人员1</a>
-												</td>
-												<td class="center">
-													&nbsp;(固管家服务平台)
-												</td>
-												<td class="center">固管家平台服务人员</td>
-												<td class="center"></td>
-												<td class="center"></td>
-												<td class="center">127.0.0.1</td>
-												<td class="center">2017-03-16 15:52:58</td>
-												<td class="center">
-													<div class="hidden-sm hidden-xs action-buttons">
-
-														<a class="green" href="user-save.html" title="编辑"
-														   data-mode="page" data-title="平台工作人员1编辑"
-														   data-url="#"
-														   data-data="{id:'40'}" data-width="50%">
-															<i class="ace-icon fa fa-pencil bigger-130"></i>
-														</a>
-
-														<a class="red" href="javascript:void(0);" title="删除"
-														   data-mode="del" data-title="删除操作"
-														   data-msg="你确定删除此数据吗?"
-														   data-url="user/delete" data-data="{id:'40'}">
+														<a class="red" href="javascript:void(0);" title="删除">
 															<i class="ace-icon fa fa-trash-o bigger-130"></i>
 														</a>
 													</div>
@@ -920,17 +346,25 @@
 											<div style="float: left;">
 												<div style="padding-top:5px;">
 			<span class="badge badge-info">
-				当前第 1 页 / 1 页，共 2 条数据
+				当前第 {{pageInfo.pageNum}} 页 / {{pageInfo.pages}}页，共
+                {{pageInfo.total}} 条数据
 			</span>
 												</div>
 											</div>
 											<div>
 												<div class="pagination no-margin pull-right clearfix">
-													<li class="prev disabled"><a href="javascript:void(0);" onclick="">首页</a></li>
-													<li class="prev disabled"><a href="javascript:void(0);" onclick="">上一页</a></li>
-													<li class="active"><a href="javascript:void(0);" onclick="">1</a></li>
-													<li class="next disabled"><a href="javascript:void(0);" onclick="">下一页</a></li>
-													<li class="next disabled"><a href="javascript:void(0);" onclick="">尾页</a></li>
+                                                    <li class="prev "><a href="javascript:void(0);" @click="selectAll()">首页</a></li>
+
+                                                    <li
+                                                            v-if="pageInfo.hasPreviousPage" class="prev"><a href="javascript:void(0);" @click="selectAll(pageInfo.prePage,pageInfo.pageSize)">上一页</a></li>
+                                                    <li v-else class="prev disabled"><a href="javascript:void(0);">上一页</a></li>
+
+                                                    <li :class="pageInfo.pageNum==p?'active':''" v-for="p in pageInfo.navigatepageNums"><a href="javascript:void(0);"  @click="selectAll(p,pageInfo.pageSize)">{{p}}</a></li>
+
+                                                    <li v-if="pageInfo.hasNextPage" class="next"><a href="javascript:void(0);" @click="selectAll(pageInfo.nextPage,pageInfo.pageSize)">下一页</a></li>
+                                                    <li v-else class="next disabled"><a href="javascript:void(0);">下一页</a></li>
+
+                                                    <li class="next "><a href="javascript:void(0);" @click="selectAll(pageInfo.pages,pageInfo.pageSize)">尾页</a></li>
 												</div>
 
 											</div>
@@ -939,31 +373,75 @@
 									</div>
 								</div>
 
-								<div id="profile" class="tab-pane">
-									<form action="user/save" method="post" id="sysuser-save-form">
+								<div id="profile" class="tab-pane" :class="!actives==false?'active':''">
+									<form  method="post" id="sysuser-save-form">
+                                        <div class="center padding-10">
+                                            <label>登录名称：</label>
+                                            <input type="text"
+                                                   class="width-50"
+                                                   name="username" datatype="*"
+                                                   nullmsg="请输入名称！"
+                                                   v-model="user.username"/>
+                                        </div>
 										<div class="center padding-10">
 											<label>真实姓名：</label>
-											<input type="text" class="width-50" name="name" datatype="*"  nullmsg="请输入姓名！"/>
+											<input type="text"
+                                                   class="width-50"
+                                                   name="name" datatype="*"
+                                                   nullmsg="请输入姓名！"
+                                                   v-model="user.name"/>
 										</div>
 										<div class="center padding-10">
 											<label>手机：</label>
 											<input type="text" class="width-50" name="phone" datatype="*" id="phone" nullmsg="请输入手机号！"
-												   ajaxurl="user/checkname" />
+												   ajaxurl="user/checkname"
+                                                   v-model="user.phone" />
 										</div>
 										<div class="center padding-10">
 											<label>密码：</label>
 											<input type="password" class="width-50" name="password"
-												   datatype="*6-16" errormsg="密码范围在6~16位之间！" nullmsg="请输入密码！" />
+												   datatype="*6-16"
+                                                   errormsg="密码范围在6~16位之间！"
+                                                   nullmsg="请输入密码！"
+                                                   v-model="user.password"/>
 										</div>
 										<div class="center padding-10">
 											<label>确认密码：</label>
 											<input type="password" class="width-50" name="repassword"
 												   datatype="*" recheck="password" errormsg="您两次输入的密码不一致！" nullmsg="请输入确认密码！"/>
 										</div>
+
+                                        <div class="center padding-10">
+                                            <label class="inline">所属机构：</label>
+
+                                            <div class="btn-group width-50"
+                                                 @click="changeUp" ><!---->
+                                                <span data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle width-100" >
+		<span id="pullDownTreeCurNameone">{{user.officeName}}</span> <i
+                                                        class="ace-icon fa icon-on-right" :class="up?'fa-angle-up':'fa-angle-down'"></i>
+	</span>
+
+                                                <div class="dropdown-menu dropdown-caret scrollable width-100" data-height="250" >
+                                                    <div class="padding-15">
+                                                        <div style="padding-bottom: 10px;" >
+                                                            <!--阻止点击input后隐藏下拉事件触发       v-model="condition.name"-->
+                                                            <input type="text" id="pullDownTreeSearchone" @click.stop @keydown.enter="search" v-model="user.officeName" placeholder="搜索" class="width-100"/>
+                                                        </div>
+                                                        <ul class="ztree" id="pullDownTreeone" @click.stop></ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="companyId" value="0" id="pullDownTreeCurIdone"/>
+                                            <input type="hidden" name="" value="" id="pullDownTreeCurPidone"/>
+                                            <input type="hidden" name="officeType" value="" id="pullDownTreeCurCidone"/>
+                                        </div>
+
+
 										<div class="center padding-10" >
 											<label>所属角色：</label>
 											<div class="width-50 inline text-left">
-												<select name="roleIds" multiple="" class="chosen-select tag-input-style" id="role-choose" data-placeholder="选择角色" style="display: none;">
+												<select name="roleIds"
+                                                        class="search_contains tag-input-style" id="role-choose" data-placeholder="选择角色" v-model="user.roleId">
 													<option value="27">
 														测试运输方普通人员
 														&nbsp;(固管家运输方测试机构)
@@ -988,97 +466,45 @@
 														超级管理员
 														&nbsp;(固管家服务平台)
 													</option>
-												</select><div class="chosen-container chosen-container-multi chosen-container-active" style="width: 100%;" title="" id="role_choose_chosen"><ul class="chosen-choices"><li class="search-field"><input onfocus="add(this);" onblur="remove(this);" type="text" value="选择角色" class="default" autocomplete="off" style="width: 77px;"></li></ul><div class="chosen-drop"><ul class="chosen-results"><li class="active-result" data-option-array-index="0">测试运输方普通人员 &nbsp;(固管家运输方测试机构)</li><li class="active-result" data-option-array-index="1">单位普通人员 &nbsp;(固管家服务平台)</li><li class="active-result" data-option-array-index="2">单位管理员 &nbsp;(固管家服务平台)</li><li class="active-result" data-option-array-index="3">监管方 &nbsp;(重庆市环境保护局)</li><li class="active-result" data-option-array-index="4">固管家平台服务人员 &nbsp;(固管家服务平台)</li><li class="active-result" data-option-array-index="5">超级管理员 &nbsp;(固管家服务平台)</li></ul></div></div>
-												<script>
-													function add(obj){
-														var classVal = document.getElementById("role_choose_chosen").getAttribute("class");
-														classVal = classVal.concat("chosen-with-drop");
-														document.getElementById("role_choose_chosen").setAttribute("class",classVal);
-													}
+												</select>
+												<!--<script>-->
+													<!--function add(obj){-->
+														<!--var classVal = document.getElementById("role_choose_chosen").getAttribute("class");-->
+														<!--classVal = classVal.concat("chosen-with-drop");-->
+														<!--document.getElementById("role_choose_chosen").setAttribute("class",classVal);-->
+													<!--}-->
 
-													function remove(obj) {
-														var classVal = document.getElementById("role_choose_chosen").getAttribute("class");
-														classVal = classVal.replace("chosen-with-drop"," ");
-														document.getElementById("role_choose_chosen").setAttribute("class",classVal);
-													}
-												</script>
+													<!--function remove(obj) {-->
+														<!--var classVal = document.getElementById("role_choose_chosen").getAttribute("class");-->
+														<!--classVal = classVal.replace("chosen-with-drop"," ");-->
+														<!--document.getElementById("role_choose_chosen").setAttribute("class",classVal);-->
+													<!--}-->
+												<!--</script>-->
 											</div>
 										</div>
 										<div class="center padding-10">
 											<label>邮箱：</label>
-											<input type="text" class="width-50" name="email" />
+											<input type="text"
+                                                   class="width-50"
+                                                   name="email"
+                                                   v-model="user.email"/>
 										</div>
 										<div class="center padding-10" >
 											<label style="vertical-align: top;">描述：</label>
-											<textarea type="text" class="width-50" name="remarks"></textarea>
+											<textarea type="text"
+                                                      class="width-50"
+                                                      name="remarks"
+                                                      v-model="user.remarks"></textarea>
 										</div>
 										<div class="margin-t15">
-											<span class="btn btn-info btn-block bigger-120" id="sysuser-save-btn">保 存</span>
+											<span
+                                                    class="btn btn-info btn-block bigger-120" id="sysuser-save-btn" @click="addApp()">保 存</span>
 										</div>
 									</form>
 								</div>
 							</div>
 						</div>
-						<style>
-							#profile .center>label{width: 100px;text-align: right;}
-						</style>
 
-						<script type="text/javascript">
-                            $(function(){
-
-                               /* var sysuserForm = $("#sysuser-save-form").Validform({
-                                    ajaxPost : true,
-                                    beforeSubmit:function(curform){
-                                        var loadi = layer.load(5,2);
-                                        $("#sysuser-save-form").data('loadi',loadi);
-                                    },
-                                    callback:function(data){
-                                        layer.close($("#sysuser-save-form").data('loadi'));
-                                        if(data>0) {
-                                            layer.msg('操作成功', 1, 1,function(){
-                                                if("false" == "true"){
-                                                    location.reload();
-                                                }else{
-                                                    $curmenu.trigger('click');
-                                                }
-                                                layer.closeAll();
-                                            });
-                                        }else{
-                                            layer.msg('操作失败', 3, 1);
-                                        }
-                                    },
-                                    tiptype : function(msg, o, cssctl) {
-                                        if (!o.obj.is("form")) {
-                                            if (o.type != 2) {
-                                                tip.errorTip(msg,o.obj);
-                                            }
-                                        }
-                                    },
-                                    tipSweep : true
-                                });*/
-                                $("#sysuser-save-btn").click(function() {
-                                    if("true" == "true"){
-                                        sysuserForm.config({
-
-                                        });
-
-                                    }
-                                    sysuserForm.submitForm(false);
-                                    return false;
-                                });
-
-                                $("#sysuser-save-form-cancel").click(function(){
-                                    layer.closeAll();
-                                    return false;
-                                });
-
-                                $("#sysuser-save-form input,#sysuser-save-form textarea").blur(function(){
-                                    layer.closeTips();
-                                    return false;
-                                })
-
-                            });
-						</script>
 
 					<!--	<script>
                         $("#role-select").chosen({width: "80%",search_contains: true});
@@ -1104,35 +530,39 @@
 
 
 <script type="text/javascript">
-    if('ontouchstart' in document.documentElement) document.write("<script src='../../../static/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    if('ontouchstart' in document.documentElement) document.write("<script src='static/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 </script>
-<script src="../../../static/bootstrap/bootstrap.min.js"></script>
+<script src="static/bootstrap/bootstrap.min.js"></script>
 
 <!-- ace scripts -->
-<script src="../../../static/ace/js/ace-elements.min.js"></script>
-<script src="../../../static/ace/js/ace.min.js"></script>
+<script src="static/ace/js/ace-elements.min.js"></script>
+<script src="static/ace/js/ace.min.js"></script>
 
 <script type="text/javascript">
     var ctxPath = "../../..";
     window.onload=function(){
-        /* $("#ace-settings-navbar").trigger("click");//固定头部导航栏
-        $("#ace-settings-sidebar").trigger("click");//固定左侧菜单
-        $("#ace-settings-highlight").trigger("click"); */
+        $("#sidebar").load("main/sidebar");
+        $("#navbar").load("main/navbar");
     };
 </script>
 
 <!-- 引入其他js -->
-<script src="../../../static/js/history.js"></script>
-<script type="text/javascript" src="../../../static/layer/layer.js"></script>
-<script type="text/javascript" src="../../../static/js/spin.min.js"></script>
-<script type="text/javascript" src="../../../static/ztree/jquery.ztree.all-3.5.min.js"></script>
-<script type="text/javascript" src="../../../static/js/jquery.autosize.min.js"></script>
-<script type="text/javascript" src="../../../static/chosen/chosen.jquery.min.js"></script>
-<script type="text/javascript" src="../../../static/validate/Validform_v5.3.2_min.js"></script>
-<script type="text/javascript" src="../../../static/js/jquery.form.js"></script>
-<script type="text/javascript" src="../../../static/js/bootstrap-contextmenu.js"></script>
-<script type="text/javascript" src="../../../static/js/jquery.nicescroll.min.js"></script>
-<script type="text/javascript" src="../../../static/js/public.js"></script>
+<script src="static/js/history.js"></script>
+<script type="text/javascript" src="static/layer/layer.js"></script>
+<script type="text/javascript" src="static/js/spin.min.js"></script>
+<script type="text/javascript" src="static/ztree/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="static/js/jquery.autosize.min.js"></script>
+<script type="text/javascript" src="static/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="static/validate/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="static/js/jquery.form.js"></script>
+<script type="text/javascript" src="static/js/bootstrap-contextmenu.js"></script>
+<script type="text/javascript" src="static/js/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="static/js/public.js"></script>
+<script type="text/javascript" src="static/vue/vue.js"></script>
+<script type="text/javascript" src="static/vue/axios.js"></script>
+
+<script type="text/javascript" src="static/js/user/user.js"></script>
+
 
 
 </body>

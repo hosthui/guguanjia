@@ -1,8 +1,7 @@
 package com.lyh.guguanjia.mapper;
 
 import com.lyh.guguanjia.entity.SysUser;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
@@ -20,4 +19,14 @@ public interface SysUserMapper extends Mapper<SysUser> {
 			"and sur.role_id=#{map.roleId})")
 	List<SysUser> selectByunRole(@Param("map") Map<String, String> map);
 
+	@SelectProvider(type = SysUserSqlProvider.class,method = "selectSqlPage")
+	List<SysUser> selectPage(Map<String,String> map);
+
+	@Delete("DELETE from sys_user_role WHERE user_id=#{uid}")
+	int deleteByUid(Long uid);
+
+	@Insert("INSERT INTO sys_user_role(role_id, user_id, create_by, " +
+			"create_date, update_by, update_date, del_flag) VALUES (#{rid}, " +
+			"#{uid}, NULL, now(), NULL, now(), '0')")
+	int insertRoleUser(@Param("rid") Long rid,@Param("uid") Long uid);
 }
